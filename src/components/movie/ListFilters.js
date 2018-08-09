@@ -3,7 +3,7 @@ import React from "react";
 const MovieListFilters = ({ handleYearChange, handleGenreChange, genres }) => {
   const thisYear = new Date().getFullYear();
   return (
-    <div class="movie-list-filters">
+    <div className="movie-list-filters">
       <select onChange={handleYearChange}>
         <option value={thisYear}>This year</option>
         <option value={thisYear - 1}>Since {thisYear - 1}</option>

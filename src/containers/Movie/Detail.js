@@ -1,13 +1,14 @@
-import React from "react";
-import Header from "../../components/layout/Header";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-const MovieDetail = () => {
-  return (
-    <div>
-      <Header />
-      Testing test test
-    </div>
-  );
-};
-
+class MovieDetail extends Component {
+  render() {
+    console.log("YOOO");
+    return (
+      <div>
+        <Link to="/">&laquo; Back</Link>
+      </div>
+    );
+  }
+}
 export default MovieDetail;

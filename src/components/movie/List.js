@@ -5,7 +5,8 @@ import "./List.css";
 const MovieList = ({ movies = [] }) => {
   return (
     <div class="movie-list">
-      {movies && movies.map(movie => <MovieListItem movie={movie} />)}
+      {movies &&
+        movies.map(movie => <MovieListItem key={movie.id} movie={movie} />)}
     </div>
   );
 };

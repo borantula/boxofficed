@@ -1,49 +1,37 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
 import Root from "./containers/Root";
-import {
-  boundChangeYear,
-  boundGetGenreList,
-  boundChangeGenre
-} from "./actions/";
+import Header from "./components/layout/Header";
+import MovieDetail from "./containers/Movie/Detail";
+import { boundGetGenreList } from "./actions/";
 
 class App extends Component {
   componentDidMount() {
-    document.title = "Movie Site That Rocks";
+    document.title = "Money Maker Movies";
 
     //get genre list
+    //TODO: store this in local storage
     this.props.boundGetGenreList();
   }
 
   render() {
-    const { yearChanged, movies, year, genres, genreChanged } = this.props;
     return (
-      <Root
-        yearChanged={yearChanged}
-        genreChanged={genreChanged}
-        movies={movies}
-        year={year}
-        genres={genres}
-      />
+      <div>
+        <Header title="Money Maker Movies" />
+        <Router>
+          <Switch>
+            <Route path={"/"} exact component={Root} />
+            <Route path={"/movie/:movieId"} component={MovieDetail} />
+          </Switch>
+        </Router>
+      </div>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const { movies, year, genres } = state;
-  return {
-    movies,
-    year,
-    genres
-  };
-};
-
 export default connect(
-  mapStateToProps,
-  {
-    yearChanged: boundChangeYear,
-    boundGetGenreList,
-    genreChanged: boundChangeGenre
-  }
+  null,
+  { boundGetGenreList }
 )(App);

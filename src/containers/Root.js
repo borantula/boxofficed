@@ -1,9 +1,14 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import { connect } from "react-redux";
 import range from "lodash/range";
 import Header from "../components/layout/Header";
 import MovieList from "../components/movie/List";
 import MovieListFilters from "../components/movie/ListFilters";
+import {
+  boundChangeYear,
+  boundGetGenreList,
+  boundChangeGenre
+} from "../actions/";
 
 class Root extends Component {
   handleYearChange = e => this.props.yearChanged(e.target.value);
@@ -18,7 +23,6 @@ class Root extends Component {
 
     return (
       <div className="homepage">
-        <Header title="Money Maker Movies" />
         <MovieListFilters
           handleYearChange={this.handleYearChange}
           handleGenreChange={this.handleGenreChange}
@@ -29,5 +33,20 @@ class Root extends Component {
     );
   }
 }
+const mapStateToProps = (state, ownProps) => {
+  const { movies, year, genres } = state;
+  return {
+    movies,
+    year,
+    genres
+  };
+};
 
-export default Root;
+export default connect(
+  mapStateToProps,
+  {
+    yearChanged: boundChangeYear,
+    boundGetGenreList,
+    genreChanged: boundChangeGenre
+  }
+)(Root);
