@@ -39,12 +39,10 @@ export const boundChangeGenre = genre => (dispatch, getState) => {
 };
 
 export const boundGetGenreList = () => dispatch => {
-  fetchGenres().then(response => {
-    dispatch(getGenreList(response.data.genres));
-  });
+  fetchGenres(dispatch);
 };
 
-const fetchMovies = ({ year, genre }, dispatch) => {
+const fetchMovies = async ({ year, genre }, dispatch) => {
   const yearEnd = year + 11;
   let params = {
     certification_country: "US",
@@ -65,13 +63,15 @@ const fetchMovies = ({ year, genre }, dispatch) => {
   const url = `https://api.themoviedb.org/3/discover/movie?${query}`;
 
   //TODO error handling
-  return axios.get(url).then(response => {
+  const response = await axios.get(url);
+
+  if (response) {
     const movies = response.data.results;
     dispatch(updateMovieList(movies));
-  });
+  }
 };
 
-const fetchGenres = () => {
+const fetchGenres = async dispatch => {
   let params = {
     api_key: "f4ff8d4cb5499ad87a50e9da9cd9850c",
     language: "en-US"
@@ -82,5 +82,8 @@ const fetchGenres = () => {
   const url = `https://api.themoviedb.org/3/genre/movie/list?${query}`;
 
   //TODO error handling
-  return axios.get(url);
+  const response = await axios.get(url);
+  if (response.data.genres) {
+    dispatch(getGenreList(response.data.genres));
+  }
 };

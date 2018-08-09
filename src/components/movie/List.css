@@ -5,6 +5,13 @@
   margin: 50px 0;
   padding: 0 20px;
 }
+@media (min-width: 1200px) {
+  .movie-list {
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 0;
+    grid-auto-columns: auto;
+  }
+}
 
 .movie-item {
   padding: 20px;
@@ -16,9 +23,12 @@
 }
 
 .movie-item__title {
+  font-family: "Cinzel", "Times New Roman", Times, serif;
+  line-height: 1.5;
 }
 
 .movie-item__desc {
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.5;
+  text-align: justify;
 }
