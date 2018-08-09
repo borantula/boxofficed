@@ -7,4 +7,8 @@
 
 .header h1 {
   margin: 0;
+  font-family: "Cinzel", Arial, cursive;
+  letter-spacing: 4px;
+  font-size: 35px;
+  color: #333;
 }
