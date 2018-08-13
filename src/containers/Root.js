@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Helmet } from "react-helmet";
 import range from "lodash/range";
 import Header from "../components/layout/Header";
 import MovieList from "../components/movie/List";
@@ -8,7 +9,7 @@ import {
   boundChangeYear,
   boundGetGenreList,
   boundChangeGenre,
-  boundResetDisplayedMovie,
+  boundResetDisplayedMovie
 } from "../actions/";
 
 class Root extends Component {
@@ -25,6 +26,11 @@ class Root extends Component {
 
     return (
       <div className="homepage">
+        <Helmet>
+          <title>
+            Money Maker Movies - Masses could never be wrong, right!
+          </title>
+        </Helmet>
         <MovieListFilters
           handleYearChange={this.handleYearChange}
           handleGenreChange={this.handleGenreChange}
@@ -46,13 +52,11 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = {
-  
-    resetDisplayedMovie: boundResetDisplayedMovie,
-    yearChanged: boundChangeYear,
-    boundGetGenreList,
-    genreChanged: boundChangeGenre
-  
-}
+  resetDisplayedMovie: boundResetDisplayedMovie,
+  yearChanged: boundChangeYear,
+  boundGetGenreList,
+  genreChanged: boundChangeGenre
+};
 /*
 yearChanged: boundChangeYear,
   boundGetGenreList,
@@ -60,5 +64,5 @@ yearChanged: boundChangeYear,
 */
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,  
+  mapDispatchToProps
 )(Root);

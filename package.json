@@ -1,5 +1,5 @@
 {
-  "name": "new",
+  "name": "money-maker-movies",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -12,6 +12,7 @@
     "querystring": "0.2.0",
     "react": "16.4.1",
     "react-dom": "16.4.1",
+    "react-helmet": "5.2.0",
     "react-redux": "5.0.7",
     "react-router": "4.3.1",
     "react-router-dom": "4.3.1",
