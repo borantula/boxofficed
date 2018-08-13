@@ -4,9 +4,10 @@ import { compose } from "redux";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { Helmet } from "react-helmet";
+import MovieDetail from "../../components/movie/Detail";
 import { fetchMovieIfNeeded } from "../../actions/";
 
-class MovieDetail extends Component {
+class MovieDetailPage extends Component {
   componentDidMount() {
     const movieId = this.props.match.params.movieId;
     this.props.fetchMovieIfNeeded(movieId);
@@ -16,22 +17,13 @@ class MovieDetail extends Component {
     const movie = this.props.displayedMovie;
     return (
       <div>
-        <Link to="/">&laquo; Back</Link>
         {movie && (
-          <div>
-            <Helmet>
-              <title>{movie.title} - Money Maker Movies</title>
-            </Helmet>
-            <h1>{movie.title}</h1>
-            <img
-              className="movie-item__poster"
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              width="150"
-              alt={movie.title}
-            />
-            <div className="movie-item__desc">{movie.overview}</div>
-          </div>
+          <Helmet>
+            <title>{movie.title} - Money Maker Movies</title>
+          </Helmet>
         )}
+        <Link to="/">&laquo; Back</Link>
+        {movie && <MovieDetail movie={movie} />}
       </div>
     );
   }
@@ -50,4 +42,4 @@ export default compose(
     mapStateToProps,
     { fetchMovieIfNeeded }
   )
-)(MovieDetail);
+)(MovieDetailPage);

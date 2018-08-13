@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
 import Root from "./containers/Root";
 import Header from "./components/layout/Header";
-import MovieDetail from "./containers/Movie/Detail";
+import MovieDetailPage from "./containers/Movie/DetailPage";
 import { boundGetGenreList } from "./actions/";
 
 class App extends Component {
@@ -23,7 +23,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path={"/"} exact component={Root} />
-            <Route path={"/movie/:movieId"} component={MovieDetail} />
+            <Route path={"/movie/:movieId"} component={MovieDetailPage} />
           </Switch>
         </Router>
       </div>
