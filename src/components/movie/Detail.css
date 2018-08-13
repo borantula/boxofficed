@@ -1,0 +1,21 @@
+.movie-detail {
+  display: grid;
+  grid-template-rows: auto;
+  margin: 0px auto;
+  padding: 0 20px;
+  justify-items: center;
+}
+
+.movie-detail .movie-detail__title {
+  margin-top: 0px;
+}
+
+.movie-detail__desc {
+  margin: 2em 0;
+}
+
+@media (min-width: 800px) {
+  .movie-detail {
+    width: 50%;
+  }
+}
