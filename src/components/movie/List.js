@@ -4,7 +4,7 @@ import "./List.css";
 
 const MovieList = ({ movies = [] }) => {
   return (
-    <div class="movie-list">
+    <div className="movie-list">
       {movies &&
         movies.map(movie => <MovieListItem key={movie.id} movie={movie} />)}
     </div>

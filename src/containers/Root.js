@@ -7,7 +7,8 @@ import MovieListFilters from "../components/movie/ListFilters";
 import {
   boundChangeYear,
   boundGetGenreList,
-  boundChangeGenre
+  boundChangeGenre,
+  boundResetDisplayedMovie,
 } from "../actions/";
 
 class Root extends Component {
@@ -15,6 +16,7 @@ class Root extends Component {
   handleGenreChange = e => this.props.genreChanged(e.target.value);
 
   componentDidMount() {
+    this.props.resetDisplayedMovie();
     this.props.yearChanged(this.props.year);
   }
 
@@ -36,17 +38,27 @@ class Root extends Component {
 const mapStateToProps = (state, ownProps) => {
   const { movies, year, genres } = state;
   return {
+    ...ownProps,
     movies,
     year,
     genres
   };
 };
 
-export default connect(
-  mapStateToProps,
-  {
+const mapDispatchToProps = {
+  
+    resetDisplayedMovie: boundResetDisplayedMovie,
     yearChanged: boundChangeYear,
     boundGetGenreList,
     genreChanged: boundChangeGenre
-  }
+  
+}
+/*
+yearChanged: boundChangeYear,
+  boundGetGenreList,
+  genreChanged: boundChangeGenre,
+*/
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,  
 )(Root);

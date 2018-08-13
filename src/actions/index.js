@@ -1,5 +1,6 @@
 import axios from "axios";
 import querystring from "querystring";
+import { fetchGenres, fetchMovies, fetchMovieDetails } from "./action-creators";
 export const UPDATE_MOVIE_LIST = "UPDATE_MOVIE_LIST";
 export const REQUEST_MOVIES_BY_YEAR = "REQUEST_MOVIES_BY_YEAR";
 export const CHANGE_YEAR = "CHANGE_YEAR";
@@ -25,10 +26,21 @@ export const getGenreList = genres => ({
   genres
 });
 
+
+export const displayMovie = movie => ({
+  type: "DISPLAY_MOVIE",
+  movie
+});
+
+export const resetDisplayedMovie = () => ({
+  type: "RESET_DISPLAYED_MOVIE"
+});
+
 /**
  * Dispatch year change and also start fetching movies
  */
 export const boundChangeYear = year => (dispatch, getState) => {
+  console.log("NEW YEAR",year);
   dispatch(changeYear(parseInt(year)));
   fetchMovies(getState(), dispatch);
 };
@@ -42,48 +54,24 @@ export const boundGetGenreList = () => dispatch => {
   fetchGenres(dispatch);
 };
 
-const fetchMovies = async ({ year, genre }, dispatch) => {
-  const yearEnd = year + 11;
-  let params = {
-    certification_country: "US",
-    with_original_language: "en",
-    sort_by: "revenue.desc",
-    include_video: true,
-    "primary_release_date.gte": year + "-01-01",
-    "primary_release_date.lte": yearEnd + "-01-01",
-    api_key: "f4ff8d4cb5499ad87a50e9da9cd9850c"
-  };
 
-  if (genre) {
-    params.with_genres = genre;
-  }
-
-  const query = querystring.stringify(params);
-
-  const url = `https://api.themoviedb.org/3/discover/movie?${query}`;
-
-  //TODO error handling
-  const response = await axios.get(url);
-
-  if (response) {
-    const movies = response.data.results;
-    dispatch(updateMovieList(movies));
-  }
+export const boundResetDisplayedMovie = () => dispatch => {
+  dispatch(resetDisplayedMovie());
 };
 
-const fetchGenres = async dispatch => {
-  let params = {
-    api_key: "f4ff8d4cb5499ad87a50e9da9cd9850c",
-    language: "en-US"
-  };
 
-  const query = querystring.stringify(params);
+export const fetchMovieIfNeeded = movieId => (dispatch,getState) => {
+  /* 
+    const selected = movies.find((movie) => {
+      console.log(movie, movie.id, Number(movieId));
+      return movie.id === Number(movieId);
+    });
+  */
+  console.log('fetch it',movieId);
+  fetchMovieDetails(Number(movieId)).then((movie)=>{
 
-  const url = `https://api.themoviedb.org/3/genre/movie/list?${query}`;
-
-  //TODO error handling
-  const response = await axios.get(url);
-  if (response.data.genres) {
-    dispatch(getGenreList(response.data.genres));
-  }
-};
+    console.log("MOVIE", movie);
+    dispatch(displayMovie(movie));
+  })
+  
+}

@@ -30,10 +30,20 @@ const year = (state = 2018, action) => {
 };
 
 const genre = (state = "", action) => {
-  console.log("genre", action);
   switch (action.type) {
     case "CHANGE_GENRE":
       return action.genre;
+    default:
+      return state;
+  }
+};
+
+const displayedMovie = (state = false, action) => {
+  switch (action.type) {
+    case "DISPLAY_MOVIE":
+      return action.movie;
+    case "RESET_DISPLAYED_MOVIE":
+      return false;
     default:
       return state;
   }
@@ -43,7 +53,8 @@ const rootReducer = combineReducers({
   movies,
   year,
   genres,
-  genre
+  genre,
+  displayedMovie
 });
 
 export default rootReducer;
