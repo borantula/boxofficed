@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { Link } from "react-router-dom";
@@ -28,6 +29,11 @@ class MovieDetailPage extends Component {
     );
   }
 }
+
+MovieDetailPage.propTypes = {
+  displayedMovie: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  fetchMovieIfNeeded: PropTypes.func.isRequired
+};
 
 const mapStateToProps = (state, ownProps) => {
   const { displayedMovie } = state;

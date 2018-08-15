@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
-import range from "lodash/range";
-import Header from "../components/layout/Header";
 import MovieList from "../components/movie/List";
 import MovieListFilters from "../components/movie/ListFilters";
 import {
@@ -46,10 +45,20 @@ class Root extends Component {
     );
   }
 }
+
+Root.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  year: PropTypes.number.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+  resetDisplayedMovie: PropTypes.func.isRequired,
+  yearChanged: PropTypes.func.isRequired,
+  boundGetGenreList: PropTypes.func.isRequired,
+  genreChanged: PropTypes.func.isRequired
+};
+
 const mapStateToProps = (state, ownProps) => {
   const { movies, year, genres } = state;
   return {
-    ...ownProps,
     movies,
     year,
     genres
@@ -62,11 +71,7 @@ const mapDispatchToProps = {
   boundGetGenreList,
   genreChanged: boundChangeGenre
 };
-/*
-yearChanged: boundChangeYear,
-  boundGetGenreList,
-  genreChanged: boundChangeGenre,
-*/
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

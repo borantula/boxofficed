@@ -13,8 +13,8 @@ const MovieDetail = ({ movie }) => {
         width="150"
         alt={movie.title}
       />
-      <div>Budget: ${movie.budget.toLocaleString("en")}</div>
-      <div>Revenue: ${movie.revenue.toLocaleString("en")}</div>
+      <div>Budget: ${movie.budget && movie.budget.toLocaleString("en")}</div>
+      <div>Revenue: ${movie.budget && movie.revenue.toLocaleString("en")}</div>
       <div> {movie.runtime} min.</div>
       <div className="movie-detail__desc">{movie.overview}</div>
       <img

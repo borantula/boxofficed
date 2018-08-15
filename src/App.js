@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import Root from "./containers/Root";
 import Header from "./components/layout/Header";
 import MovieDetailPage from "./containers/Movie/DetailPage";
@@ -30,6 +31,10 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  boundGetGenreList: PropTypes.func.isRequired
+};
 
 export default connect(
   null,

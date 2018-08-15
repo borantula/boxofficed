@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const MovieListFilters = ({ handleYearChange, handleGenreChange, genres }) => {
   const thisYear = new Date().getFullYear();
@@ -10,7 +11,8 @@ const MovieListFilters = ({ handleYearChange, handleGenreChange, genres }) => {
         <option value={thisYear - 5}>Last 5 year</option>
         {[2010, 2000, 1990, 1980, 1970, 1960].map(value => (
           <option key={value} value={value}>
-            {value}'s
+            {value}
+            's
           </option>
         ))}
       </select>
@@ -24,6 +26,12 @@ const MovieListFilters = ({ handleYearChange, handleGenreChange, genres }) => {
       </select>
     </div>
   );
+};
+
+PropTypes.propTypes = {
+  handleYearChange: PropTypes.func.isRequired,
+  handleGenreChange: PropTypes.func.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
 };
 
 export default MovieListFilters;

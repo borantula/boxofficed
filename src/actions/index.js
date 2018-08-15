@@ -37,13 +37,12 @@ export const resetDisplayedMovie = () => ({
  * Dispatch year change and also start fetching movies
  */
 export const boundChangeYear = year => (dispatch, getState) => {
-  console.log("NEW YEAR", year);
-  dispatch(changeYear(parseInt(year)));
+  dispatch(changeYear(parseInt(year, 10)));
   fetchMovies(getState(), dispatch);
 };
 
 export const boundChangeGenre = genre => (dispatch, getState) => {
-  dispatch(changeGenre(parseInt(genre)));
+  dispatch(changeGenre(parseInt(genre, 10)));
   fetchMovies(getState(), dispatch);
 };
 
@@ -56,15 +55,15 @@ export const boundResetDisplayedMovie = () => dispatch => {
 };
 
 export const fetchMovieIfNeeded = movieId => (dispatch, getState) => {
-  /* 
-    const selected = movies.find((movie) => {
-      console.log(movie, movie.id, Number(movieId));
-      return movie.id === Number(movieId);
-    });
-  */
-  console.log("fetch it", movieId);
+  const selected = getState()["movies"].find(movie => {
+    console.log(movie, movie.id, Number(movieId));
+    return movie.id === Number(movieId);
+  });
+  if (selected) {
+    dispatch(displayMovie(selected));
+  }
+
   fetchMovieDetails(Number(movieId)).then(movie => {
-    console.log("MOVIE", movie);
     dispatch(displayMovie(movie));
   });
 };
