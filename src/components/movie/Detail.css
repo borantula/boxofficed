@@ -1,9 +1,6 @@
 .movie-detail {
-  display: grid;
-  grid-template-rows: auto;
-  margin: 0px auto;
+  margin: 0px auto 100px;
   padding: 0 20px;
-  justify-items: center;
 }
 
 .movie-detail .movie-detail__title {

@@ -15,3 +15,4 @@ and https://www.themoviedb.org for movie informations
 - [ ] Check if extra detail exists for movie.
 - [ ] Handle if movie link is directly used
 - [ ] Put movie names as slug to url
+- [x] Add years next to titles

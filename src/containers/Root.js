@@ -30,6 +30,11 @@ class Root extends Component {
           <title>
             Money Maker Movies - Masses could never be wrong, right!
           </title>
+          <link
+            rel="icon"
+            type="image/png"
+            href="{require('./favicon-movie.png')}"
+          />
         </Helmet>
         <MovieListFilters
           handleYearChange={this.handleYearChange}

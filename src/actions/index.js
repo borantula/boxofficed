@@ -1,5 +1,3 @@
-import axios from "axios";
-import querystring from "querystring";
 import { fetchGenres, fetchMovies, fetchMovieDetails } from "./action-creators";
 export const UPDATE_MOVIE_LIST = "UPDATE_MOVIE_LIST";
 export const REQUEST_MOVIES_BY_YEAR = "REQUEST_MOVIES_BY_YEAR";
@@ -26,7 +24,6 @@ export const getGenreList = genres => ({
   genres
 });
 
-
 export const displayMovie = movie => ({
   type: "DISPLAY_MOVIE",
   movie
@@ -40,7 +37,7 @@ export const resetDisplayedMovie = () => ({
  * Dispatch year change and also start fetching movies
  */
 export const boundChangeYear = year => (dispatch, getState) => {
-  console.log("NEW YEAR",year);
+  console.log("NEW YEAR", year);
   dispatch(changeYear(parseInt(year)));
   fetchMovies(getState(), dispatch);
 };
@@ -54,24 +51,20 @@ export const boundGetGenreList = () => dispatch => {
   fetchGenres(dispatch);
 };
 
-
 export const boundResetDisplayedMovie = () => dispatch => {
   dispatch(resetDisplayedMovie());
 };
 
-
-export const fetchMovieIfNeeded = movieId => (dispatch,getState) => {
+export const fetchMovieIfNeeded = movieId => (dispatch, getState) => {
   /* 
     const selected = movies.find((movie) => {
       console.log(movie, movie.id, Number(movieId));
       return movie.id === Number(movieId);
     });
   */
-  console.log('fetch it',movieId);
-  fetchMovieDetails(Number(movieId)).then((movie)=>{
-
+  console.log("fetch it", movieId);
+  fetchMovieDetails(Number(movieId)).then(movie => {
     console.log("MOVIE", movie);
     dispatch(displayMovie(movie));
-  })
-  
-}
+  });
+};
