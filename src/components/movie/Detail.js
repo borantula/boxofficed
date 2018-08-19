@@ -6,7 +6,7 @@ const MovieDetail = ({ movie }) => {
   return (
     <div className="movie-detail">
       <h1 className="movie-detail__title">{movie.title}</h1>
-      <h4>{movie.tagline ? movie.tagline : "&nbsp;"}</h4>
+      <h4>{movie.tagline ? movie.tagline : " "}</h4>
       <img
         className="movie-item__poster"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
