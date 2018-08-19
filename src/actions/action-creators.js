@@ -1,6 +1,6 @@
 import axios from "axios";
 import querystring from "querystring";
-import {updateMovieList,getGenreList} from './index';
+import { updateMovieList, getGenreList } from "./index";
 
 export const fetchMovies = async ({ year, genre }, dispatch) => {
   const yearEnd = year + 11;
@@ -31,13 +31,11 @@ export const fetchMovies = async ({ year, genre }, dispatch) => {
   }
 };
 
-export const fetchMovieDetails = async (movieId) => {
+export const fetchMovieDetails = async movieId => {
   let params = {
     language: "en_US",
     api_key: "f4ff8d4cb5499ad87a50e9da9cd9850c"
   };
-
-
 
   const query = querystring.stringify(params);
 
@@ -47,7 +45,6 @@ export const fetchMovieDetails = async (movieId) => {
   const response = await axios.get(url);
 
   if (response.status === 200) {
-    console.log("GETTING MOVIE", response.data);
     return response.data;
   }
 };

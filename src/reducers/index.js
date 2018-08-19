@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
+import initialState from "./initialState";
 
-const movies = (state = [], action) => {
-  console.log(action);
+const movies = (state = initialState.movies, action) => {
   switch (action.type) {
     case "UPDATE_MOVIE_LIST":
       return action.movies;
@@ -10,8 +10,7 @@ const movies = (state = [], action) => {
   }
 };
 
-const genres = (state = [], action) => {
-  console.log(action);
+const genres = (state = initialState.genres, action) => {
   switch (action.type) {
     case "GET_GENRE_LIST":
       return action.genres;
@@ -20,7 +19,7 @@ const genres = (state = [], action) => {
   }
 };
 
-const year = (state = 2018, action) => {
+const year = (state = initialState.year, action) => {
   switch (action.type) {
     case "CHANGE_YEAR":
       return action.year;
@@ -29,7 +28,7 @@ const year = (state = 2018, action) => {
   }
 };
 
-const genre = (state = "", action) => {
+const genre = (state = initialState.genre, action) => {
   switch (action.type) {
     case "CHANGE_GENRE":
       return action.genre;
@@ -38,7 +37,7 @@ const genre = (state = "", action) => {
   }
 };
 
-const displayedMovie = (state = false, action) => {
+const displayedMovie = (state = initialState.displayedMovie, action) => {
   switch (action.type) {
     case "DISPLAY_MOVIE":
       return action.movie;

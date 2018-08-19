@@ -5,13 +5,6 @@
   margin: 50px 0;
   padding: 0 20px;
 }
-@media (min-width: 1200px) {
-  .movie-list {
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-gap: 0;
-    grid-auto-columns: auto;
-  }
-}
 
 .movie-item {
   padding: 20px;
@@ -39,4 +32,18 @@
   font-size: 14px;
   line-height: 1.5;
   text-align: justify;
+  display: none;
+}
+
+/*Desktop Overrides*/
+@media (min-width: 1200px) {
+  .movie-list {
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 0;
+    grid-auto-columns: auto;
+  }
+
+  .movie-item__desc {
+    display: inherit;
+  }
 }
