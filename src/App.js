@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import ScrollToTop from "react-router-scroll-top";
 import Root from "./containers/Root";
 import Header from "./components/layout/Header";
 import MovieDetailPage from "./containers/Movie/DetailPage";
@@ -22,10 +23,12 @@ class App extends Component {
       <div>
         <Header title="Money Maker Movies" />
         <Router>
-          <Switch>
-            <Route path={"/"} exact component={Root} />
-            <Route path={"/movie/:movieId"} component={MovieDetailPage} />
-          </Switch>
+          <ScrollToTop>
+            <Switch>
+              <Route path={"/"} exact component={Root} />
+              <Route path={"/movie/:movieId"} component={MovieDetailPage} />
+            </Switch>
+          </ScrollToTop>
         </Router>
       </div>
     );
