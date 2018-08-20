@@ -45,7 +45,6 @@ export const boundChangeGenre = genre => (dispatch, getState) => {
   dispatch(changeGenre(parseInt(genre, 10)));
   fetchMovies(getState(), dispatch);
 };
-
 export const boundGetGenreList = () => dispatch => {
   fetchGenres(dispatch);
 };

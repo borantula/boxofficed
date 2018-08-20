@@ -1,12 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Detail.css";
 
 const MovieDetail = ({ movie }) => {
   return (
     <div className="movie-detail">
-      <h4>{movie.tagline}</h4>
       <h1 className="movie-detail__title">{movie.title}</h1>
-
+      <h4>{movie.tagline ? movie.tagline : " "}</h4>
       <img
         className="movie-item__poster"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -25,6 +25,10 @@ const MovieDetail = ({ movie }) => {
       />
     </div>
   );
+};
+
+MovieDetail.propTypes = {
+  movie: PropTypes.object.isRequired
 };
 
 export default MovieDetail;
