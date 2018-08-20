@@ -11,6 +11,8 @@ export const fetchMovies = async ({ year, genre }, dispatch) => {
     include_video: true,
     "primary_release_date.gte": year + "-01-01",
     "primary_release_date.lte": yearEnd + "-01-01",
+    //we dont want short weird movies popup
+    "with_runtime.gte":60,
     api_key: "f4ff8d4cb5499ad87a50e9da9cd9850c"
   };
 
