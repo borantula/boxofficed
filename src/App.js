@@ -8,6 +8,7 @@ import Root from "./containers/Root";
 import Header from "./components/layout/Header";
 import MovieDetailPage from "./containers/Movie/DetailPage";
 import { boundGetGenreList } from "./actions/";
+// import { checkUser } from "./utility/firebaseUser"; 
 
 class App extends Component {
   componentDidMount() {
@@ -21,7 +22,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header title="Money Maker Movies" />
+        <Header title="Money Maker Movies"/>
         <Router>
           <ScrollToTop>
             <Switch>
@@ -41,5 +42,8 @@ App.propTypes = {
 
 export default connect(
   null,
-  { boundGetGenreList }
+  { 
+    boundGetGenreList,
+    // checkUser 
+  }
 )(App);
