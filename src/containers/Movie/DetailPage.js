@@ -32,13 +32,13 @@ class MovieDetailPage extends Component {
 
 MovieDetailPage.propTypes = {
   displayedMovie: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  fetchMovieIfNeeded: PropTypes.func.isRequired
+  fetchMovieIfNeeded: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
   const { displayedMovie } = state;
   return {
-    displayedMovie
+    displayedMovie,
   };
 };
 

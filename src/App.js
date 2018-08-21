@@ -8,7 +8,7 @@ import Root from "./containers/Root";
 import Header from "./components/layout/Header";
 import MovieDetailPage from "./containers/Movie/DetailPage";
 import { boundGetGenreList } from "./actions/";
-// import { checkUser } from "./utility/firebaseUser"; 
+import SignInPage from "./containers/User/SignInPage";
 
 class App extends Component {
   componentDidMount() {
@@ -28,6 +28,7 @@ class App extends Component {
             <Switch>
               <Route path={"/"} exact component={Root} />
               <Route path={"/movie/:movieId"} component={MovieDetailPage} />
+              <Route path={"/signin"} exact component={SignInPage}/>
             </Switch>
           </ScrollToTop>
         </Router>

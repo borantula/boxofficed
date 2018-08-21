@@ -6,7 +6,7 @@ const firebaseApp = firebase.initializeApp({
     databaseURL: "https://money-maker-movies.firebaseio.com",
     projectId: "money-maker-movies",
     storageBucket: "money-maker-movies.appspot.com",
-    messagingSenderId: "571614524129" 
+    messagingSenderId: "571614524129"
 });
 
 export default firebaseApp;
