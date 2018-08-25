@@ -8,6 +8,7 @@ import Root from "./containers/Root";
 import Header from "./components/layout/Header";
 import MovieDetailPage from "./containers/Movie/DetailPage";
 import { boundGetGenreList } from "./actions/";
+import SignInPage from "./containers/User/SignInPage";
 
 class App extends Component {
   componentDidMount() {
@@ -21,12 +22,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header title="Money Maker Movies" />
+        <Header title="Money Maker Movies"/>
         <Router>
           <ScrollToTop>
             <Switch>
               <Route path={"/"} exact component={Root} />
               <Route path={"/movie/:movieId"} component={MovieDetailPage} />
+              <Route path={"/signin"} exact component={SignInPage}/>
             </Switch>
           </ScrollToTop>
         </Router>
@@ -41,5 +43,8 @@ App.propTypes = {
 
 export default connect(
   null,
-  { boundGetGenreList }
+  { 
+    boundGetGenreList,
+    // checkUser 
+  }
 )(App);

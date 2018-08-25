@@ -8,7 +8,7 @@ import {
   boundChangeYear,
   boundGetGenreList,
   boundChangeGenre,
-  boundResetDisplayedMovie
+  boundResetDisplayedMovie,
 } from "../actions/";
 
 class Root extends Component {
@@ -53,7 +53,7 @@ Root.propTypes = {
   resetDisplayedMovie: PropTypes.func.isRequired,
   yearChanged: PropTypes.func.isRequired,
   boundGetGenreList: PropTypes.func.isRequired,
-  genreChanged: PropTypes.func.isRequired
+  genreChanged: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -61,7 +61,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     movies,
     year,
-    genres
+    genres,
   };
 };
 
@@ -69,7 +69,7 @@ const mapDispatchToProps = {
   resetDisplayedMovie: boundResetDisplayedMovie,
   yearChanged: boundChangeYear,
   boundGetGenreList,
-  genreChanged: boundChangeGenre
+  genreChanged: boundChangeGenre,
 };
 
 export default connect(
