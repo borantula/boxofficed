@@ -7,9 +7,15 @@
 
 .header h1 {
   margin: 0;
-  font-family: "Cinzel", "Times New Roman", Times, serif;
+  font-family: "Cinzel", "Times New Roman", Arial, serif;
   font-weight: 400;
   letter-spacing: 4px;
-  font-size: 35px;
+  font-size: 18px;
   color: #333;
+}
+
+@media (min-width: 800px) {
+  .header h1 {
+    font-size: 35px;
+  }
 }
