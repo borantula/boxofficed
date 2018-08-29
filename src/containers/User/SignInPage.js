@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+//import PropTypes from "prop-types";
+//import { connect } from "react-redux";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "firebase";
-import { compose } from "redux";
+//import { compose } from "redux";
 import { withRouter } from "react-router";
 
 firebase.initializeApp({
@@ -24,12 +24,35 @@ const uiConfig = {
   // We will display Google and Facebook as auth providers.
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
   ],
+  callbacks: {
+    // Avoid redirects after sign-in.
+    signInSuccessWithAuthResult: () => false,
+  },
 };
 
 class SignInPage extends Component {
+  // The component's Local state.
+  state = {
+    isSignedIn: false, // Local signed-in state.
+    user: false,
+  };
+
+  componentDidMount() {
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+      console.log("SIGNEDIN", user);
+      this.setState({ isSignedIn: !!user, user });
+    });
+  }
   render() {
+    if (this.state.isSignedIn) {
+      return (
+        <div>
+          <h1>Welcome, {this.state.user.displayName}</h1>
+        </div>
+      );
+    }
     return (
       <div>
         <StyledFirebaseAuth

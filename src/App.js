@@ -22,13 +22,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header title="Money Maker Movies"/>
+        <Header title="Money Maker Movies" />
         <Router>
           <ScrollToTop>
             <Switch>
               <Route path={"/"} exact component={Root} />
               <Route path={"/movie/:movieId"} component={MovieDetailPage} />
-              <Route path={"/signin"} exact component={SignInPage}/>
+              <Route path={"/signin"} exact component={SignInPage} />
             </Switch>
           </ScrollToTop>
         </Router>
@@ -38,13 +38,13 @@ class App extends Component {
 }
 
 App.propTypes = {
-  boundGetGenreList: PropTypes.func.isRequired
+  boundGetGenreList: PropTypes.func.isRequired,
 };
 
 export default connect(
   null,
-  { 
+  {
     boundGetGenreList,
-    // checkUser 
+    // checkUser
   }
 )(App);
