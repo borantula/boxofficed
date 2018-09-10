@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import MovieList from "../components/movie/List";
 import MovieListFilters from "../components/movie/ListFilters";
+import FilterSentence from "../components/movie/FilterSentence";
 import {
   boundChangeYear,
   boundGetGenreList,
@@ -21,7 +22,7 @@ class Root extends Component {
   }
 
   render() {
-    const { movies, genres = [] } = this.props;
+    const { movies, genres = [], genre, year } = this.props;
 
     return (
       <div className="homepage">
@@ -39,7 +40,11 @@ class Root extends Component {
           handleYearChange={this.handleYearChange}
           handleGenreChange={this.handleGenreChange}
           genres={genres}
+          genre={genre}
+          year={year}
         />
+
+        <FilterSentence genre={genre} year={year} genres={genres} />
         <MovieList movies={movies} />
       </div>
     );
@@ -49,6 +54,7 @@ class Root extends Component {
 Root.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
   year: PropTypes.number.isRequired,
+  genre: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   genres: PropTypes.arrayOf(PropTypes.object).isRequired,
   resetDisplayedMovie: PropTypes.func.isRequired,
   yearChanged: PropTypes.func.isRequired,
@@ -57,11 +63,12 @@ Root.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { movies, year, genres } = state;
+  const { movies, year, genres, genre } = state;
   return {
     movies,
     year,
     genres,
+    genre,
   };
 };
 

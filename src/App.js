@@ -9,6 +9,7 @@ import Header from "./components/layout/Header";
 import MovieDetailPage from "./containers/Movie/DetailPage";
 import { boundGetGenreList } from "./actions/";
 import SignInPage from "./containers/User/SignInPage";
+import * as routes from "./constants/routes";
 
 class App extends Component {
   componentDidMount() {
@@ -26,9 +27,9 @@ class App extends Component {
         <Router>
           <ScrollToTop>
             <Switch>
-              <Route path={"/"} exact component={Root} />
-              <Route path={"/movie/:movieId"} component={MovieDetailPage} />
-              <Route path={"/signin"} exact component={SignInPage} />
+              <Route path={routes.HOME} exact component={Root} />
+              <Route path={routes.MOVIE} component={MovieDetailPage} />
+              <Route path={routes.SIGNIN} exact component={SignInPage} />
             </Switch>
           </ScrollToTop>
         </Router>
