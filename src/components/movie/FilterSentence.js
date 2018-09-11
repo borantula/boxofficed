@@ -15,8 +15,8 @@ export class FilterSentence extends Component {
       : this.props.genres.find(genre => genre.id === this.props.genre).name;
 
     const genreText = genreName
-      ? `from <strong>${genreName.toLowerCase()}</strong> genre`
-      : " from all genres";
+      ? `and <strong>${genreName.toLowerCase()}</strong> genre`
+      : " and all genres";
 
     const thisYear = new Date().getFullYear();
 

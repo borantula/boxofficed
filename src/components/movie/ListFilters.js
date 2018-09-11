@@ -23,7 +23,7 @@ const MovieListFilters = ({
         ))}
       </select>
       <select onChange={handleGenreChange} value={genre}>
-        <option value="">-- Select a Genre --</option>
+        <option value="">All genres</option>
         {genres.map(value => (
           <option key={value.id} value={value.id}>
             {value.name}
