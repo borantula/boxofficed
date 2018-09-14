@@ -22,9 +22,10 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Header title="Money Maker Movies" />
-        <Router>
+      <Router>
+        <div>
+          <Header title="Money Maker Movies" routes={routes} />
+
           <ScrollToTop>
             <Switch>
               <Route path={routes.HOME} exact component={Root} />
@@ -32,8 +33,8 @@ class App extends Component {
               <Route path={routes.SIGNIN} exact component={SignInPage} />
             </Switch>
           </ScrollToTop>
-        </Router>
-      </div>
+        </div>
+      </Router>
     );
   }
 }

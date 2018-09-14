@@ -1,13 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import "./Header.css";
 
-const Header = ({ title = "", checkUser }) => {
+const Header = ({ title = "", checkUser, routes }) => {
   return (
     <header className="header">
       <h1>
-        <a href="/">{title}</a>
+        <Link to={routes.HOME}>{title}</Link>
       </h1>
+
+      <Link to={routes.SIGNIN}>Login</Link>
     </header>
   );
 };

@@ -6,15 +6,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 //import { compose } from "redux";
 import { withRouter } from "react-router";
-
-firebase.initializeApp({
-  apiKey: "AIzaSyAXxW-qPfrgdjqxX4yAOeL1qiK2H9NhJBE",
-  authDomain: "money-maker-movies.firebaseapp.com",
-  databaseURL: "https://money-maker-movies.firebaseio.com",
-  projectId: "money-maker-movies",
-  storageBucket: "money-maker-movies.appspot.com",
-  messagingSenderId: "571614524129",
-});
+import { auth } from "../../app/firebase/firebase";
 
 // Configure FirebaseUI.
 const uiConfig = {
@@ -41,7 +33,7 @@ class SignInPage extends Component {
   };
 
   componentDidMount() {
-    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+    this.unregisterAuthObserver = auth.onAuthStateChanged(user => {
       console.log("SIGNEDIN", user);
       this.setState({ isSignedIn: !!user, user });
     });
@@ -56,10 +48,7 @@ class SignInPage extends Component {
     }
     return (
       <div>
-        <StyledFirebaseAuth
-          uiConfig={uiConfig}
-          firebaseAuth={firebase.auth()}
-        />
+        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
       </div>
     );
   }

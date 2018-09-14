@@ -1,7 +1,7 @@
-import firebase from "./firebase";
+import { auth } from "./firebase";
 
 export const checkUser = function() {
-  var user = firebase.auth().currentUser;
+  var user = auth.currentUser;
 
   if (user) {
     // User is signed in.
@@ -9,7 +9,7 @@ export const checkUser = function() {
   } else {
     // No user is signed in.
     console.log("here no user", user);
-    var provider = new firebase.auth().GoogleAuthProvider();
+    var provider = new auth.GoogleAuthProvider();
     provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
     firebase
       .auth()
