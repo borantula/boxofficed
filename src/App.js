@@ -10,6 +10,7 @@ import MovieDetailPage from "./containers/Movie/DetailPage";
 import { boundGetGenreList } from "./actions/";
 import UserSignInPage from "./containers/User/SignInPage";
 import * as routes from "./constants/routes";
+import withAuthentication from "./components/hoc/withAuthentication";
 
 class App extends Component {
   componentDidMount() {
@@ -55,7 +56,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default connect(
   mapStateToProps,
-  {
-    boundGetGenreList,
-  }
-)(App);
+  { boundGetGenreList }
+)(withAuthentication(App));

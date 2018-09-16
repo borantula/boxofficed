@@ -1,14 +1,22 @@
 import React, { Component } from "react";
-import { auth, uiConfig } from "../../app/firebase/firebase";
+import { connect } from "react-redux";
+import { auth } from "../../app/firebase/firebase";
 import { setCurrentUser } from "../../actions/";
 
-function withAuthentication(WrappedComponent) {
+/**
+ * This HoC checks for a user session on initial page load
+ * @param {*} WrappedComponent
+ * @param {*} mapStateToProps
+ * @param {*} actionCreators
+ */
+function withAuthentication(WrappedComponent, mapStateToProps, actionCreators) {
   class Authentication extends Component {
     componentDidMount() {
       auth.onAuthStateChanged(user => {
-        console.log("SIGNEDIN", user);
-        this.setState({ isSignedIn: !!user, user });
-        this.props.setCurrentUser(user);
+        console.log("SIGNEDIN HOC", user);
+        if (user) {
+          this.props.setCurrentUser(user);
+        }
       });
     }
 
@@ -17,7 +25,10 @@ function withAuthentication(WrappedComponent) {
     }
   }
 
-  return Authentication;
+  return connect(
+    null,
+    { setCurrentUser }
+  )(Authentication);
 }
 
 export default withAuthentication;
