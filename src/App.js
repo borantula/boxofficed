@@ -8,7 +8,7 @@ import Root from "./containers/Root";
 import Header from "./components/layout/Header";
 import MovieDetailPage from "./containers/Movie/DetailPage";
 import { boundGetGenreList } from "./actions/";
-import SignInPage from "./containers/User/SignInPage";
+import UserSignInPage from "./containers/User/SignInPage";
 import * as routes from "./constants/routes";
 
 class App extends Component {
@@ -24,13 +24,17 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Header title="Money Maker Movies" routes={routes} />
+          <Header
+            title="Money Maker Movies"
+            routes={routes}
+            user={this.props.user}
+          />
 
           <ScrollToTop>
             <Switch>
               <Route path={routes.HOME} exact component={Root} />
               <Route path={routes.MOVIE} component={MovieDetailPage} />
-              <Route path={routes.SIGNIN} exact component={SignInPage} />
+              <Route path={routes.SIGNIN} exact component={UserSignInPage} />
             </Switch>
           </ScrollToTop>
         </div>
@@ -41,12 +45,17 @@ class App extends Component {
 
 App.propTypes = {
   boundGetGenreList: PropTypes.func.isRequired,
+  //current user object
+  user: PropTypes.object.isRequired,
 };
 
+const mapStateToProps = (state, ownProps) => ({
+  user: state.currentUser,
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   {
     boundGetGenreList,
-    // checkUser
   }
 )(App);

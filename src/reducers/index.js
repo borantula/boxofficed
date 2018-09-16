@@ -48,12 +48,28 @@ const displayedMovie = (state = initialState.displayedMovie, action) => {
   }
 };
 
+const currentUser = (state = initialState.currentUser, action) => {
+  switch (action.type) {
+    case "USER_LOGGED_IN":
+      console.log(action);
+      return {
+        isLoggedIn: true,
+        data: action.payload,
+      };
+    case "USER_LOGGED_OUT":
+      return initialState.currentUser;
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   movies,
   year,
   genres,
   genre,
-  displayedMovie
+  displayedMovie,
+  currentUser,
 });
 
 export default rootReducer;

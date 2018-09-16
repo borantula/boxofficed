@@ -5,7 +5,11 @@ const initialState = {
   genres: [],
   year: currentYear,
   genre: "",
-  displayedMovie: false
+  displayedMovie: false,
+  currentUser: {
+    isLoggedIn: false,
+    data: {},
+  },
 };
 
 export default initialState;

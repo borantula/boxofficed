@@ -1,31 +1,14 @@
 import React, { Component } from "react";
-//import PropTypes from "prop-types";
-//import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { Redirect } from "react-router";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import firebase from "firebase/app";
-import "firebase/auth";
-//import { compose } from "redux";
 import { withRouter } from "react-router";
-import { auth } from "../../app/firebase/firebase";
+import { auth, uiConfig } from "../../app/firebase/firebase";
+import { setCurrentUser } from "../../actions/";
 
-// Configure FirebaseUI.
-const uiConfig = {
-  // Popup signin flow rather than redirect flow.
-  signInFlow: "popup",
-  // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-  signInSuccessUrl: "/",
-  // We will display Google and Facebook as auth providers.
-  signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-  ],
-  callbacks: {
-    // Avoid redirects after sign-in.
-    signInSuccessWithAuthResult: () => false,
-  },
-};
-
-class SignInPage extends Component {
+class UserSignInPage extends Component {
   // The component's Local state.
   state = {
     isSignedIn: false, // Local signed-in state.
@@ -36,22 +19,47 @@ class SignInPage extends Component {
     this.unregisterAuthObserver = auth.onAuthStateChanged(user => {
       console.log("SIGNEDIN", user);
       this.setState({ isSignedIn: !!user, user });
+      this.props.setCurrentUser(user);
     });
   }
-  render() {
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.state.isSignedIn) {
-      return (
-        <div>
-          <h1>Welcome, {this.state.user.displayName}</h1>
-        </div>
-      );
+      console.log("here is a user");
     }
+  }
+
+  /**
+   * Redirects to home if logged in or render signin if user it not loggedin
+   */
+  render() {
     return (
       <div>
-        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+        {this.state.isSignedIn && <Redirect to="/" />}
+
+        {!this.state.isSignedIn && (
+          <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+        )}
       </div>
     );
   }
 }
 
-export default withRouter(SignInPage);
+UserSignInPage.propTypes = {
+  //Current user object
+  currentUser: PropTypes.object.isRequired,
+  //Sets user in state
+  setCurrentUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state, ownProps) => ({
+  currentUser: state.currentUser,
+});
+
+export default compose(
+  withRouter,
+  connect(
+    mapStateToProps,
+    { setCurrentUser }
+  )
+)(UserSignInPage);
