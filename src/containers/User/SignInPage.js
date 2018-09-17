@@ -17,7 +17,6 @@ class UserSignInPage extends Component {
 
   componentDidMount() {
     this.unregisterAuthObserver = auth.onAuthStateChanged(user => {
-      console.log("SIGNEDIN", user);
       this.setState({ isSignedIn: !!user, user });
       if (user) {
         this.props.setCurrentUser(user);

@@ -10,7 +10,7 @@ const MovieListItem = ({ movie }) => {
     <div className="movie-item">
       <Link
         to={{
-          pathname: `/movie/${movie.id}`
+          pathname: `/movie/${movie.id}`,
         }}
       >
         <img
@@ -20,10 +20,13 @@ const MovieListItem = ({ movie }) => {
           alt={movie.title}
         />
       </Link>
+      <div>
+        <button>Put it in the bag!</button>
+      </div>
       <h3 className="movie-item__title">
         <Link
           to={{
-            pathname: `/movie/${movie.id}`
+            pathname: `/movie/${movie.id}`,
           }}
         >
           {movie.title} ({year})
@@ -35,7 +38,7 @@ const MovieListItem = ({ movie }) => {
 };
 
 MovieListItem.propTypes = {
-  movie: PropTypes.object.isRequired
+  movie: PropTypes.object.isRequired,
 };
 
 export default MovieListItem;
