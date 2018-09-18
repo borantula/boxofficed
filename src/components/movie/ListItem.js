@@ -1,11 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import truncate from "lodash/truncate";
+import { movieAddedToSavedList } from "../../actions/";
 
-const MovieListItem = ({ movie }) => {
+const MovieListItem = props => {
+  const movie = props.movie;
+  console.log("other props", props);
   const desc = truncate(movie.overview, { length: 300, separator: " " });
   const year = movie.release_date.split("-")[0];
+  const isInBag = props.savedMovies.find(saved => movie.id === saved.id);
+  console.log(isInBag);
   return (
     <div className="movie-item">
       <Link
@@ -21,7 +27,17 @@ const MovieListItem = ({ movie }) => {
         />
       </Link>
       <div>
-        <button>Put it in the bag!</button>
+        {!isInBag && (
+          <button onClick={() => props.movieAddedToSavedList(movie)}>
+            Put it in the bag!
+          </button>
+        )}
+
+        {isInBag && (
+          <button onClick={() => props.movieAddedToSavedList(movie)}>
+            Take it outta my bag!
+          </button>
+        )}
       </div>
       <h3 className="movie-item__title">
         <Link
@@ -39,6 +55,11 @@ const MovieListItem = ({ movie }) => {
 
 MovieListItem.propTypes = {
   movie: PropTypes.object.isRequired,
+  savedMovies: PropTypes.array.isRequired,
+  movieAddedToSavedList: PropTypes.func.isRequired,
 };
 
-export default MovieListItem;
+export default connect(
+  state => ({ savedMovies: state.savedMovies }),
+  { movieAddedToSavedList }
+)(MovieListItem);

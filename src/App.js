@@ -29,6 +29,7 @@ class App extends Component {
             title="Money Maker Movies"
             routes={routes}
             user={this.props.user}
+            savedMovies={this.props.savedMovies}
           />
 
           <ScrollToTop>
@@ -48,10 +49,12 @@ App.propTypes = {
   boundGetGenreList: PropTypes.func.isRequired,
   //current user object
   user: PropTypes.object.isRequired,
+  savedMovies: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => ({
   user: state.currentUser,
+  savedMovies: state.savedMovies,
 });
 
 export default connect(

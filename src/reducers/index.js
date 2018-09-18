@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import initialState from "./initialState";
+import savedMovieModel from "../app/model/SavedMovie";
 
 const movies = (state = initialState.movies, action) => {
   switch (action.type) {
@@ -63,6 +64,19 @@ const currentUser = (state = initialState.currentUser, action) => {
   }
 };
 
+const savedMovies = (state = initialState.savedMovies, action) => {
+  switch (action.type) {
+    case "ADD_MOVIE_TO_SAVED_LIST":
+      //already on the list
+      if (state.filter(saved => action.payload.id === saved.id).length) {
+        return state;
+      }
+      return [...state, savedMovieModel(action.payload)];
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   movies,
   year,
@@ -70,6 +84,7 @@ const rootReducer = combineReducers({
   genre,
   displayedMovie,
   currentUser,
+  savedMovies,
 });
 
 export default rootReducer;

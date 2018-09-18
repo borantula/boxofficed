@@ -8,6 +8,7 @@ export const RESET_DISPLAYED_MOVIE = "RESET_DISPLAYED_MOVIE";
 export const GET_GENRE_LIST = "GET_GENRE_LIST";
 export const USER_LOGGED_IN = "USER_LOGGED_IN";
 export const USER_LOGGED_OUT = "USER_LOGGED_OUT";
+export const ADD_MOVIE_TO_SAVED_LIST = "ADD_MOVIE_TO_SAVED_LIST";
 
 export const changeYear = year => ({
   type: CHANGE_YEAR,
@@ -41,6 +42,11 @@ export const resetDisplayedMovie = () => ({
 export const userLoggedIn = userData => ({
   type: USER_LOGGED_IN,
   payload: userData,
+});
+
+export const movieAddedToSavedList = movie => ({
+  type: ADD_MOVIE_TO_SAVED_LIST,
+  payload: movie,
 });
 
 /**
