@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import Badge from "@material-ui/core/Badge";
 import "./Header.css";
 
 const Header = ({ title = "", user, routes, savedMovies }) => {
@@ -9,12 +10,20 @@ const Header = ({ title = "", user, routes, savedMovies }) => {
       <h1>
         <Link to={routes.HOME}>{title}</Link>
       </h1>
-      {user.isLoggedIn === false && <Link to={routes.SIGNIN}>Login</Link>}
-      {user.isLoggedIn === true && <div>Welcome, {user.data.displayName}</div>}
-      <Link to={routes.MYLIST}>
-        My List(
-        {savedMovies.length})
-      </Link>
+      <div>
+        {user.isLoggedIn === false && <Link to={routes.SIGNIN}>Login</Link>}
+        {user.isLoggedIn === true && (
+          <span>Welcome, {user.data.displayName}</span>
+        )}
+
+        <Badge
+          color="primary"
+          style={{ marginLeft: "10px" }}
+          badgeContent={savedMovies.length}
+        >
+          <Link to={routes.MYLIST}>My List</Link>
+        </Badge>
+      </div>
     </header>
   );
 };

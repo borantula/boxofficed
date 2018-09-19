@@ -5,6 +5,8 @@ body {
   text-align: center;
   background: #fff;
   color: #474747;
+  margin: 0;
+  padding: 0;
 }
 
 select {
