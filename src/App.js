@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import ScrollToTop from "react-router-scroll-top";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import Root from "./containers/Root";
 import Header from "./components/layout/Header";
 import MovieDetailPage from "./containers/Movie/DetailPage";
@@ -25,23 +26,25 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <Header
-            title="Money Maker Movies"
-            routes={routes}
-            user={this.props.user}
-            savedMovies={this.props.savedMovies}
-          />
+        <React.Fragment>
+          <CssBaseline>
+            <Header
+              title="Money Maker Movies"
+              routes={routes}
+              user={this.props.user}
+              savedMovies={this.props.savedMovies}
+            />
 
-          <ScrollToTop>
-            <Switch>
-              <Route path={routes.HOME} exact component={Root} />
-              <Route path={routes.MOVIE} component={MovieDetailPage} />
-              <Route path={routes.SIGNIN} exact component={UserSignInPage} />
-              <Route path={routes.MYLIST} exact component={MyListPage} />
-            </Switch>
-          </ScrollToTop>
-        </div>
+            <ScrollToTop>
+              <Switch>
+                <Route path={routes.HOME} exact component={Root} />
+                <Route path={routes.MOVIE} component={MovieDetailPage} />
+                <Route path={routes.SIGNIN} exact component={UserSignInPage} />
+                <Route path={routes.MYLIST} exact component={MyListPage} />
+              </Switch>
+            </ScrollToTop>
+          </CssBaseline>
+        </React.Fragment>
       </Router>
     );
   }
