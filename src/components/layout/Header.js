@@ -11,10 +11,10 @@ const Header = ({ title = "", user, routes, savedMovies }) => {
       </h1>
       {user.isLoggedIn === false && <Link to={routes.SIGNIN}>Login</Link>}
       {user.isLoggedIn === true && <div>Welcome, {user.data.displayName}</div>}
-      <span>
+      <Link to={routes.MYLIST}>
         My List(
         {savedMovies.length})
-      </span>
+      </Link>
     </header>
   );
 };
@@ -25,6 +25,7 @@ Header.propTypes = {
   //Current user object
   user: PropTypes.object.isRequired,
   savedMovies: PropTypes.array.isRequired,
+  routes: PropTypes.object.isRequired,
 };
 
 export default Header;

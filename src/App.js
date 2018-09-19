@@ -7,8 +7,9 @@ import ScrollToTop from "react-router-scroll-top";
 import Root from "./containers/Root";
 import Header from "./components/layout/Header";
 import MovieDetailPage from "./containers/Movie/DetailPage";
-import { boundGetGenreList } from "./actions/";
 import UserSignInPage from "./containers/User/SignInPage";
+import { boundGetGenreList } from "./actions/";
+import MyListPage from "./containers/User/MyListPage";
 import * as routes from "./constants/routes";
 import withAuthentication from "./components/hoc/withAuthentication";
 
@@ -37,6 +38,7 @@ class App extends Component {
               <Route path={routes.HOME} exact component={Root} />
               <Route path={routes.MOVIE} component={MovieDetailPage} />
               <Route path={routes.SIGNIN} exact component={UserSignInPage} />
+              <Route path={routes.MYLIST} exact component={MyListPage} />
             </Switch>
           </ScrollToTop>
         </div>

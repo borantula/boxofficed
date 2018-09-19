@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import truncate from "lodash/truncate";
-import { movieAddedToSavedList } from "../../actions/";
+import Button from "@material-ui/core/Button";
+
+import Icon from "@material-ui/core/Icon";
+import {
+  movieAddedToSavedList,
+  movieRemovedFromSavedList,
+} from "../../actions/";
 
 const MovieListItem = props => {
   const movie = props.movie;
@@ -28,15 +34,25 @@ const MovieListItem = props => {
       </Link>
       <div>
         {!isInBag && (
-          <button onClick={() => props.movieAddedToSavedList(movie)}>
-            Put it in the bag!
-          </button>
+          <Button
+            variant="outlined"
+            color="primary"
+            size="small"
+            onClick={() => props.movieAddedToSavedList(movie)}
+          >
+            <Icon>playlist_add</Icon> Put it in the bag!
+          </Button>
         )}
 
         {isInBag && (
-          <button onClick={() => props.movieAddedToSavedList(movie)}>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={() => props.movieRemovedFromSavedList(movie)}
+          >
+            <Icon>playlist_add_check</Icon>
             Take it outta my bag!
-          </button>
+          </Button>
         )}
       </div>
       <h3 className="movie-item__title">
@@ -57,9 +73,11 @@ MovieListItem.propTypes = {
   movie: PropTypes.object.isRequired,
   savedMovies: PropTypes.array.isRequired,
   movieAddedToSavedList: PropTypes.func.isRequired,
+  movieRemovedFromSavedList: PropTypes.func.isRequired,
 };
 
+//TODO: should not get it via connect but via props from parent
 export default connect(
   state => ({ savedMovies: state.savedMovies }),
-  { movieAddedToSavedList }
+  { movieAddedToSavedList, movieRemovedFromSavedList }
 )(MovieListItem);
