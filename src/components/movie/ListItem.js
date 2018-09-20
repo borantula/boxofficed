@@ -39,7 +39,7 @@ const MovieListItem = props => {
             size="small"
             onClick={() => props.movieAddedToSavedList(movie)}
           >
-            <Icon>playlist_add</Icon> Put it in the bag!
+            <Icon>playlist_add</Icon> Put it in my the bag!
           </Button>
         )}
 
