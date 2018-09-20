@@ -34,7 +34,11 @@ const Header = ({ title = "", user, routes, savedMovies, classes }) => {
             </Link>
           </Typography>
           <span>
-            {user.isLoggedIn === false && <Link to={routes.SIGNIN}>Login</Link>}
+            {user.isLoggedIn === false && (
+              <Link className="my-list-btn" to={routes.SIGNIN}>
+                <Button color="inherit">Login</Button>
+              </Link>
+            )}
             {user.isLoggedIn === true && (
               <Badge color="secondary" badgeContent={savedMovies.length}>
                 <Link className="my-list-btn" to={routes.MYLIST}>
