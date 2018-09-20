@@ -1,13 +1,17 @@
 .movie-list {
   display: grid;
-  grid-template-columns: 48% 48%;
-  grid-gap: 2%;
+  grid-template-columns: 100%;
   margin: 50px 0;
   padding: 0 20px;
 }
 
 .movie-item {
   padding: 20px;
+}
+
+.movie-item img {
+  width: 80%;
+  max-width: 500px;
 }
 
 .movie-item:hover {

@@ -8,35 +8,9 @@ import Typography from "@material-ui/core/Typography";
 import CameraIcon from "@material-ui/icons/PhotoCamera";
 import "./Header.css";
 
-/*
 const Header = ({ title = "", user, routes, savedMovies }) => {
   return (
-    <header className="header">
-      <h1>
-        <Link to={routes.HOME}>{title}</Link>
-      </h1>
-      <div>
-        {user.isLoggedIn === false && <Link to={routes.SIGNIN}>Login</Link>}
-        {user.isLoggedIn === true && (
-          <span>Welcome, {user.data.displayName}</span>
-        )}
-
-        <Badge
-          color="primary"
-          style={{ marginLeft: "10px" }}
-          badgeContent={savedMovies.length}
-        >
-          <Link to={routes.MYLIST}>My List</Link>
-        </Badge>
-      </div>
-    </header>
-  );
-};
-*/
-
-const Header = ({ title = "", user, routes, savedMovies }) => {
-  return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
         <CameraIcon />
         <Typography variant="title" color="inherit" noWrap>
