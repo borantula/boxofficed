@@ -5,6 +5,7 @@ import { compose } from "redux";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { Helmet } from "react-helmet";
+import Button from "@material-ui/core/Button";
 import MovieDetail from "../../components/movie/Detail";
 import { fetchMovieIfNeeded } from "../../actions/";
 
@@ -23,7 +24,13 @@ class MovieDetailPage extends Component {
             <title>{movie.title} - Money Maker Movies</title>
           </Helmet>
         )}
-        <Link to="/">&laquo; Back</Link>
+
+        <Link to="/">
+          <Button variant="outlined" color="primary">
+            &laquo; Back
+          </Button>
+        </Link>
+
         {movie && <MovieDetail movie={movie} />}
       </div>
     );

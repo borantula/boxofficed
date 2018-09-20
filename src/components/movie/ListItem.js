@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import truncate from "lodash/truncate";
 import Button from "@material-ui/core/Button";
-
 import Icon from "@material-ui/core/Icon";
 import {
   movieAddedToSavedList,

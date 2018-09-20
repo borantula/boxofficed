@@ -1,32 +1,51 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { withStyles } from "@material-ui/core/styles";
 import Badge from "@material-ui/core/Badge";
 import AppBar from "@material-ui/core/AppBar";
+import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import CameraIcon from "@material-ui/icons/PhotoCamera";
 import "./Header.css";
 
-const Header = ({ title = "", user, routes, savedMovies }) => {
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+  grow: {
+    flexGrow: 1,
+  },
+};
+
+const Header = ({ title = "", user, routes, savedMovies, classes }) => {
   return (
-    <AppBar position="fixed">
-      <Toolbar>
-        <CameraIcon />
-        <Typography variant="title" color="inherit" noWrap>
-          <Link to={routes.HOME}>{title}</Link>
-        </Typography>
-        <span>
-          {user.isLoggedIn === false && <Link to={routes.SIGNIN}>Login</Link>}
-          {user.isLoggedIn === true && (
-            <span>Welcome, {user.data.displayName}</span>
-          )}
-        </span>
-        <Badge color="primary" badgeContent={savedMovies.length}>
-          <Link to={routes.MYLIST}>My List</Link>
-        </Badge>
-      </Toolbar>
-    </AppBar>
+    <div className={classes.root}>
+      <AppBar position="fixed">
+        <Toolbar>
+          <Typography
+            variant="title"
+            color="inherit"
+            noWrap
+            className={classes.grow}
+          >
+            <Link className="site-title" to={routes.HOME}>
+              {title}
+            </Link>
+          </Typography>
+          <span>
+            {user.isLoggedIn === false && <Link to={routes.SIGNIN}>Login</Link>}
+            {user.isLoggedIn === true && (
+              <Badge color="secondary" badgeContent={savedMovies.length}>
+                <Link className="my-list-btn" to={routes.MYLIST}>
+                  <Button color="inherit">My List</Button>
+                </Link>
+              </Badge>
+            )}
+          </span>
+        </Toolbar>
+      </AppBar>
+    </div>
   );
 };
 
@@ -37,6 +56,7 @@ Header.propTypes = {
   user: PropTypes.object.isRequired,
   savedMovies: PropTypes.array.isRequired,
   routes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
-export default Header;
+export default withStyles(styles)(Header);

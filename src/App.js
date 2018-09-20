@@ -34,15 +34,20 @@ class App extends Component {
               user={this.props.user}
               savedMovies={this.props.savedMovies}
             />
-
-            <ScrollToTop>
-              <Switch>
-                <Route path={routes.HOME} exact component={Root} />
-                <Route path={routes.MOVIE} component={MovieDetailPage} />
-                <Route path={routes.SIGNIN} exact component={UserSignInPage} />
-                <Route path={routes.MYLIST} exact component={MyListPage} />
-              </Switch>
-            </ScrollToTop>
+            <div className="site-content">
+              <ScrollToTop>
+                <Switch>
+                  <Route path={routes.HOME} exact component={Root} />
+                  <Route path={routes.MOVIE} component={MovieDetailPage} />
+                  <Route
+                    path={routes.SIGNIN}
+                    exact
+                    component={UserSignInPage}
+                  />
+                  <Route path={routes.MYLIST} exact component={MyListPage} />
+                </Switch>
+              </ScrollToTop>
+            </div>
           </CssBaseline>
         </React.Fragment>
       </Router>

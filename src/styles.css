@@ -2,11 +2,10 @@
 
 body {
   font-family: "Lato", "Helvetica", Arial, sans-serif;
-  text-align: center;
   background: #fff;
   color: #474747;
   margin: 0;
-  padding: 0;
+  padding: 80px 0 0;
 }
 
 select {
@@ -17,8 +16,13 @@ select {
 
 .movie-list-filters {
   margin: 1em 0;
+  text-align: center;
 }
 
 img {
   max-width: 100%;
+}
+
+.site-content {
+  text-align: center;
 }
