@@ -30,6 +30,10 @@ class Root extends Component {
           <title>
             Money Maker Movies - Masses could never be wrong, right!
           </title>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+          />
           <link
             rel="icon"
             type="image/png"

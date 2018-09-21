@@ -18,7 +18,7 @@ class MyListPage extends Component {
     return (
       <React.Fragment>
         <Typography
-          variant="display1"
+          variant="display2"
           align="center"
           color="textPrimary"
           gutterBottom
@@ -29,6 +29,14 @@ class MyListPage extends Component {
           <Typography align="center" color="textPrimary" gutterBottom>
             Movies you saved hoping you might watch some day...
           </Typography>
+        )}
+        {movies.length === 0 && (
+          <div>
+            <Typography align="center" color="textPrimary" gutterBottom>
+              You have nothing in your list yet... Go, go with the wind and save
+              some movies before it's too late!
+            </Typography>
+          </div>
         )}
         <MovieList
           movies={movies}
