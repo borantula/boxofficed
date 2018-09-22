@@ -7,13 +7,13 @@ export const updateSavedMovieList = movies => ({
   payload: movies,
 });
 
-export const updateSavedList = async (user, savedList) => {
+const updateSavedList = async (user, savedList) => {
   const docRef = db.collection(collections.COLLECTION_SAVEDLIST).doc(user.uid);
 
   return await docRef.set({ movies: savedList });
 };
 
-export const fetchSavedList = async user => {
+const fetchSavedList = async user => {
   const docRef = db.collection(collections.COLLECTION_SAVEDLIST).doc(user.uid);
   return await docRef.get();
 };
