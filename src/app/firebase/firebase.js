@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/firestore";
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -9,12 +10,16 @@ const config = {
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
 };
-console.log(config);
 
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
 const auth = firebase.auth();
+
+const db = firebase.firestore();
+db.settings({
+  timestampsInSnapshots: true,
+});
 
 // Configure FirebaseUI.
 const uiConfig = {
@@ -33,4 +38,4 @@ const uiConfig = {
   },
 };
 
-export { auth, uiConfig };
+export { auth, uiConfig, db };
