@@ -54,7 +54,6 @@ const displayedMovie = (state = initialState.displayedMovie, action) => {
 const currentUser = (state = initialState.currentUser, action) => {
   switch (action.type) {
     case types.USER_LOGGED_IN:
-      console.log(action);
       return {
         isLoggedIn: true,
         data: action.payload,
@@ -79,6 +78,9 @@ const savedMovies = (state = initialState.savedMovies, action) => {
         return state;
       }
       return [...state, action.payload];
+
+    case types.UPDATE_SAVED_MOVIES_LIST_FROM_SERVER:
+      return [...action.payload];
     case types.REMOVE_MOVIE_FROM_SAVED_LIST:
       //TODO do it with slicing, this goes over all of them
       return [...state.filter(movie => movie.id !== action.payload.id)];

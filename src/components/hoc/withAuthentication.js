@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { auth } from "../../app/firebase/firebase";
+import { auth } from "../../app/firebase";
 import { setCurrentUser } from "../../actions/";
 
 /**
@@ -10,6 +10,8 @@ import { setCurrentUser } from "../../actions/";
  * @param {*} actionCreators
  */
 function withAuthentication(WrappedComponent, mapStateToProps, actionCreators) {
+  console.log("actionCreators", actionCreators);
+
   class Authentication extends Component {
     componentDidMount() {
       auth.onAuthStateChanged(user => {

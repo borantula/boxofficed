@@ -13,6 +13,7 @@ import { boundGetGenreList } from "./actions/";
 import MyListPage from "./containers/User/MyListPage";
 import * as routes from "./constants/routes";
 import withAuthentication from "./components/hoc/withAuthentication";
+import withSavedListConnection from "./components/hoc/withSavedListConnection";
 
 class App extends Component {
   componentDidMount() {
@@ -67,7 +68,9 @@ const mapStateToProps = (state, ownProps) => ({
   savedMovies: state.savedMovies,
 });
 
+const ComposedApp = withSavedListConnection(withAuthentication(App));
+
 export default connect(
   mapStateToProps,
   { boundGetGenreList }
-)(withAuthentication(App));
+)(ComposedApp);

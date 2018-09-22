@@ -11,6 +11,7 @@ import {
   boundChangeGenre,
   boundResetDisplayedMovie,
 } from "../actions/";
+import { movieAddedToSavedList, movieRemovedFromSavedList } from "../actions";
 
 class Root extends Component {
   handleYearChange = e => this.props.yearChanged(e.target.value);
@@ -22,7 +23,15 @@ class Root extends Component {
   }
 
   render() {
-    const { movies, genres = [], genre, year } = this.props;
+    const {
+      movies,
+      genres = [],
+      genre,
+      year,
+      movieAddedToSavedList,
+      movieRemovedFromSavedList,
+      savedMovies,
+    } = this.props;
 
     return (
       <div className="homepage">
@@ -49,7 +58,12 @@ class Root extends Component {
         />
 
         <FilterSentence genre={genre} year={year} genres={genres} />
-        <MovieList movies={movies} />
+        <MovieList
+          movies={movies}
+          savedMovies={savedMovies}
+          movieAddedToSavedList={movieAddedToSavedList}
+          movieRemovedFromSavedList={movieRemovedFromSavedList}
+        />
       </div>
     );
   }
@@ -57,6 +71,7 @@ class Root extends Component {
 
 Root.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  savedMovies: PropTypes.arrayOf(PropTypes.object).isRequired,
   year: PropTypes.number.isRequired,
   genre: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   genres: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -64,15 +79,18 @@ Root.propTypes = {
   yearChanged: PropTypes.func.isRequired,
   boundGetGenreList: PropTypes.func.isRequired,
   genreChanged: PropTypes.func.isRequired,
+  movieAddedToSavedList: PropTypes.func.isRequired,
+  movieRemovedFromSavedList: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { movies, year, genres, genre } = state;
+  const { movies, year, genres, genre, savedMovies } = state;
   return {
     movies,
     year,
     genres,
     genre,
+    savedMovies,
   };
 };
 
@@ -81,6 +99,8 @@ const mapDispatchToProps = {
   yearChanged: boundChangeYear,
   boundGetGenreList,
   genreChanged: boundChangeGenre,
+  movieAddedToSavedList,
+  movieRemovedFromSavedList,
 };
 
 export default connect(

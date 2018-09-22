@@ -40,6 +40,7 @@ class MyListPage extends Component {
         )}
         <MovieList
           movies={movies}
+          savedMovies={movies}
           movieAddedToSavedList={movieAddedToSavedList}
           movieRemovedFromSavedList={movieRemovedFromSavedList}
         />

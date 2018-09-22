@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { withRouter } from "react-router";
-import { auth, uiConfig } from "../../app/firebase/firebase";
+import { auth, uiConfig } from "../../app/firebase";
 import { setCurrentUser } from "../../actions/";
 
 class UserSignInPage extends Component {
