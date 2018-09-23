@@ -8,11 +8,15 @@ and https://www.themoviedb.org for movie informations
 ## ToDo List
 
 - [x] Select boxes to stay selected between pages
-- [ ] Display result of filters as a sentence
-- [ ] Add "hmm that could be" button to save movies in a localstorage list
-- [ ] Display movie details on detail page
-- [ ] Store selected movie in state
-- [ ] Check if extra detail exists for movie.
-- [ ] Handle if movie link is directly used
+- [x] Display result of filters as a sentence
+- [x] Add "hmm that could be" button to save movies in a localstorage list
+- [x] Display movie details on detail page
+- [x] Store selected movies
+- [x] Handle if movie link is directly used
 - [ ] Put movie names as slug to url
 - [x] Add years next to titles
+- [ ] Add a Random button to filters
+- [ ] Tidy up reducers and actions
+- [ ] Write tests
+- [ ] Handle movie list when user is a guest then logs in. We should have a merge mechanism
+- [ ] Move some more api functionality like retrieving genre lists etc to HOC

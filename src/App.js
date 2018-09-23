@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
+import { compose } from "recompose";
 import PropTypes from "prop-types";
 import ScrollToTop from "react-router-scroll-top";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -12,16 +13,16 @@ import UserSignInPage from "./containers/User/SignInPage";
 import { boundGetGenreList } from "./actions/";
 import MyListPage from "./containers/User/MyListPage";
 import * as routes from "./constants/routes";
-import withAuthentication from "./components/hoc/withAuthentication";
-import withSavedListConnection from "./components/hoc/withSavedListConnection";
+import {
+  withAuthentication,
+  withSavedListConnection,
+  withInitialRemoteAppData,
+  withGoogleAds,
+} from "./components/hoc/";
 
 class App extends Component {
   componentDidMount() {
     document.title = "Money Maker Movies";
-
-    //get genre list
-    //TODO: store this in local storage
-    this.props.boundGetGenreList();
   }
 
   render() {
@@ -57,7 +58,6 @@ class App extends Component {
 }
 
 App.propTypes = {
-  boundGetGenreList: PropTypes.func.isRequired,
   //current user object
   user: PropTypes.object.isRequired,
   savedMovies: PropTypes.array.isRequired,
@@ -68,7 +68,12 @@ const mapStateToProps = (state, ownProps) => ({
   savedMovies: state.savedMovies,
 });
 
-const ComposedApp = withSavedListConnection(withAuthentication(App));
+const ComposedApp = compose(
+  withInitialRemoteAppData,
+  withSavedListConnection,
+  withAuthentication,
+  withGoogleAds
+)(App);
 
 export default connect(
   mapStateToProps,
