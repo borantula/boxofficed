@@ -17,7 +17,7 @@ import {
   withAuthentication,
   withSavedListConnection,
   withInitialRemoteAppData,
-  withGoogleAds,
+  // withGoogleAds,
 } from "./components/hoc/";
 
 class App extends Component {
@@ -71,8 +71,8 @@ const mapStateToProps = (state, ownProps) => ({
 const ComposedApp = compose(
   withInitialRemoteAppData,
   withSavedListConnection,
-  withAuthentication,
-  withGoogleAds
+  withAuthentication
+  //withGoogleAds
 )(App);
 
 export default connect(
