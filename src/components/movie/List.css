@@ -6,10 +6,9 @@
 }
 
 .movie-item {
-  padding: 20px;
+  padding: 20px 0;
 }
-
-.movie-item img {
+.movie-item .movie-item__poster {
   width: 80%;
   max-width: 500px;
 }
