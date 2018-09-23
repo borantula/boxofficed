@@ -17,7 +17,7 @@ const styles = {
 const MovieListItem = props => {
   const movie = props.movie;
   const classes = props.classes;
-  const desc = truncate(movie.overview, { length: 300, separator: " " });
+  const desc = truncate(movie.overview, { length: 180, separator: " " });
   const year = movie.release_date.split("-")[0];
   const isInBag = props.savedMovies.find(saved => movie.id === saved.id);
   return (
