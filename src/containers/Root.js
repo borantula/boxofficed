@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
+import Typography from "@material-ui/core/Typography";
 import MovieList from "../components/movie/List";
 import MovieListFilters from "../components/movie/ListFilters";
 import FilterSentence from "../components/movie/FilterSentence";
 import {
   boundChangeYear,
-  boundGetGenreList,
   boundChangeGenre,
   boundResetDisplayedMovie,
 } from "../actions/";
@@ -49,6 +49,19 @@ class Root extends Component {
             href="{require('./favicon-movie.png')}"
           />
         </Helmet>
+
+        <Typography
+          variant="display2"
+          className="main-title"
+          gutterBottom
+          color="textPrimary"
+        >
+          Money Maker Movies
+        </Typography>
+
+        <Typography variant="headline" color="textSecondary">
+          Masses could never be wrong, right!
+        </Typography>
         <MovieListFilters
           handleYearChange={this.handleYearChange}
           handleGenreChange={this.handleGenreChange}
@@ -77,7 +90,6 @@ Root.propTypes = {
   genres: PropTypes.arrayOf(PropTypes.object).isRequired,
   resetDisplayedMovie: PropTypes.func.isRequired,
   yearChanged: PropTypes.func.isRequired,
-  boundGetGenreList: PropTypes.func.isRequired,
   genreChanged: PropTypes.func.isRequired,
   movieAddedToSavedList: PropTypes.func.isRequired,
   movieRemovedFromSavedList: PropTypes.func.isRequired,
@@ -97,7 +109,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = {
   resetDisplayedMovie: boundResetDisplayedMovie,
   yearChanged: boundChangeYear,
-  boundGetGenreList,
   genreChanged: boundChangeGenre,
   movieAddedToSavedList,
   movieRemovedFromSavedList,

@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Cinzel:400,700|Lato|Material+Icons");
+@import url("https://fonts.googleapis.com/css?family=Cinzel:400,700|Roboto:300,400,500|Material+Icons");
 
 body {
-  font-family: "Lato", "Helvetica", Arial, sans-serif;
+  font-family: "Roboto", "Helvetica", Arial, sans-serif;
   background: #fff;
   color: #474747;
   margin: 0;
@@ -25,4 +25,8 @@ img {
 
 .site-content {
   text-align: center;
+}
+
+h1.main-title {
+  font-family: "Cinzel", "Times New Roman", Arial, serif;
 }
