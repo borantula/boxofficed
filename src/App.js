@@ -6,11 +6,13 @@ import { compose } from "recompose";
 import PropTypes from "prop-types";
 import ScrollToTop from "react-router-scroll-top";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import deepOrange from "@material-ui/core/colors/deepOrange";
+import blue from "@material-ui/core/colors/blue";
 import Root from "./containers/Root";
 import Header from "./components/layout/Header";
 import MovieDetailPage from "./containers/Movie/DetailPage";
 import UserSignInPage from "./containers/User/SignInPage";
-import { boundGetGenreList } from "./actions/";
 import MyListPage from "./containers/User/MyListPage";
 import * as routes from "./constants/routes";
 import {
@@ -19,6 +21,13 @@ import {
   withInitialRemoteAppData,
   // withGoogleAds,
 } from "./components/hoc/";
+//TODO move theme to HoC
+const theme = createMuiTheme({
+  palette: {
+    primary: deepOrange,
+    secondary: blue,
+  },
+});
 
 class App extends Component {
   componentDidMount() {
@@ -29,28 +38,30 @@ class App extends Component {
     return (
       <Router>
         <React.Fragment>
-          <CssBaseline>
-            <Header
-              title="Money Maker Movies"
-              routes={routes}
-              user={this.props.user}
-              savedMovies={this.props.savedMovies}
-            />
-            <div className="site-content">
-              <ScrollToTop>
-                <Switch>
-                  <Route path={routes.HOME} exact component={Root} />
-                  <Route path={routes.MOVIE} component={MovieDetailPage} />
-                  <Route
-                    path={routes.SIGNIN}
-                    exact
-                    component={UserSignInPage}
-                  />
-                  <Route path={routes.MYLIST} exact component={MyListPage} />
-                </Switch>
-              </ScrollToTop>
-            </div>
-          </CssBaseline>
+          <MuiThemeProvider theme={theme}>
+            <CssBaseline>
+              <Header
+                title="Money Maker Movies"
+                routes={routes}
+                user={this.props.user}
+                savedMovies={this.props.savedMovies}
+              />
+              <div className="site-content">
+                <ScrollToTop>
+                  <Switch>
+                    <Route path={routes.HOME} exact component={Root} />
+                    <Route path={routes.MOVIE} component={MovieDetailPage} />
+                    <Route
+                      path={routes.SIGNIN}
+                      exact
+                      component={UserSignInPage}
+                    />
+                    <Route path={routes.MYLIST} exact component={MyListPage} />
+                  </Switch>
+                </ScrollToTop>
+              </div>
+            </CssBaseline>
+          </MuiThemeProvider>
         </React.Fragment>
       </Router>
     );
@@ -75,7 +86,4 @@ const ComposedApp = compose(
   //withGoogleAds
 )(App);
 
-export default connect(
-  mapStateToProps,
-  { boundGetGenreList }
-)(ComposedApp);
+export default connect(mapStateToProps)(ComposedApp);
