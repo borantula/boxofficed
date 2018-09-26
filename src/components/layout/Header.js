@@ -34,7 +34,7 @@ const Header = ({ title = "", user, routes, savedMovies, classes }) => {
           <span>
             {user.isLoggedIn === false && (
               <Link className="my-list-btn" to={routes.SIGNIN}>
-                <Button color="inherit">Login</Button>
+                <Button color="primary">Login</Button>
               </Link>
             )}
             {user.isLoggedIn === true && (
