@@ -10,12 +10,9 @@ import { setCurrentUser } from "../../actions/";
  * @param {*} actionCreators
  */
 function withAuthentication(WrappedComponent, mapStateToProps, actionCreators) {
-  console.log("actionCreators", actionCreators);
-
   class Authentication extends Component {
     componentDidMount() {
       auth.onAuthStateChanged(user => {
-        console.log("SIGNEDIN HOC", user);
         if (user) {
           this.props.setCurrentUser(user);
         }
