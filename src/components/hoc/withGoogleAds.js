@@ -18,10 +18,7 @@ function withGoogleAds(WrappedComponent, mapStateToProps, actionCreators) {
               src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
             />
             <script>{`
-              (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-3884304734738661",
-                enable_page_level_ads: true,
-              });
+              (adsbygoogle = window.adsbygoogle || []).push({});
             `}</script>
           </Helmet>
           <WrappedComponent {...this.props} />;
