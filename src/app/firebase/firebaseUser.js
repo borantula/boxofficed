@@ -7,7 +7,6 @@ export const checkUser = function() {
     // User is signed in.
   } else {
     // No user is signed in.
-
     var provider = new auth.GoogleAuthProvider();
     provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
     firebase

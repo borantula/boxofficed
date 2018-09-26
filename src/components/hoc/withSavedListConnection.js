@@ -17,12 +17,6 @@ function withSavedListConnection(
   actionCreators
 ) {
   class SavedListConnection extends Component {
-    constructor(props) {
-      super(props);
-      // Don't call this.setState() here!
-      this.state = { initiallyFetchedFromApi: false };
-    }
-
     componentDidUpdate(prevProps) {
       this.checkUserChange(prevProps);
       this.checkSavedListChange(prevProps);

@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 import MovieList from "../../components/movie/List";
 import {
   movieAddedToSavedList,
   movieRemovedFromSavedList,
 } from "../../actions";
+
+const styles = {
+  filterCard: {
+    display: "inline-flex",
+  },
+};
 
 class MyListPage extends Component {
   render() {
@@ -14,43 +23,35 @@ class MyListPage extends Component {
       movies,
       movieAddedToSavedList,
       movieRemovedFromSavedList,
+      classes,
     } = this.props;
     return (
       <React.Fragment>
-        <div className="color-white">
-          <Typography
-            variant="display2"
-            className="color-white"
-            align="center"
-            color="inherit"
-            gutterBottom
-          >
-            My List
-          </Typography>
-          {movies.length > 0 && (
+        <Card className={classes.filterCard}>
+          <CardContent>
             <Typography
+              variant="display2"
               align="center"
-              className="color-white"
               color="inherit"
               gutterBottom
             >
-              Movies you saved hoping you might watch some day...
+              My List
             </Typography>
-          )}
-          {movies.length === 0 && (
-            <div>
-              <Typography
-                align="center"
-                className="color-white"
-                color="inherit"
-                gutterBottom
-              >
-                You have nothing in your list yet... Go, go with the wind and
-                save some movies before it's too late!
+            {movies.length > 0 && (
+              <Typography align="center" color="inherit" gutterBottom>
+                Movies you saved hoping you might watch some day...
               </Typography>
-            </div>
-          )}
-        </div>
+            )}
+            {movies.length === 0 && (
+              <div>
+                <Typography align="center" color="inherit" gutterBottom>
+                  You have nothing in your list yet... Go, go with the wind and
+                  save some movies before it's too late!
+                </Typography>
+              </div>
+            )}
+          </CardContent>
+        </Card>
         <MovieList
           movies={movies}
           savedMovies={movies}
@@ -71,4 +72,4 @@ MyListPage.propTypes = {
 export default connect(
   state => ({ movies: state.savedMovies }),
   { movieAddedToSavedList, movieRemovedFromSavedList }
-)(MyListPage);
+)(withStyles(styles)(MyListPage));
