@@ -17,7 +17,7 @@ import * as routes from "./constants/routes";
 import {
   withAuthentication,
   withSavedListConnection,
-  withGoogleAds,
+  // withGoogleAds,
 } from "./components/hoc/";
 
 //TODO move theme to HoC
@@ -81,8 +81,8 @@ const mapStateToProps = (state, ownProps) => ({
 const ComposedApp = compose(
   // withInitialRemoteAppData,
   withSavedListConnection,
-  withAuthentication,
-  withGoogleAds
+  withAuthentication
+  //withGoogleAds
 )(App);
 
 export default connect(mapStateToProps)(ComposedApp);
