@@ -22,3 +22,4 @@ Website: https://boxofficed.com/
 - [ ] Write tests
 - [ ] Handle movie list when user is a guest then logs in. We should have a merge mechanism
 - [ ] Move some more api functionality like retrieving genre lists etc to HOC
+- [ ] Add pagination

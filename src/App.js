@@ -17,7 +17,6 @@ import * as routes from "./constants/routes";
 import {
   withAuthentication,
   withSavedListConnection,
-  withInitialRemoteAppData,
   // withGoogleAds,
 } from "./components/hoc/";
 
@@ -80,7 +79,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const ComposedApp = compose(
-  withInitialRemoteAppData,
+  // withInitialRemoteAppData,
   withSavedListConnection,
   withAuthentication
   //withGoogleAds
