@@ -12,8 +12,8 @@ export const fetchMovies = async ({ year, genre }, dispatch) => {
     "primary_release_date.gte": year + "-01-01",
     "primary_release_date.lte": yearEnd + "-01-01",
     //we dont want short weird movies popup
-    "with_runtime.gte":60,
-    api_key: "f4ff8d4cb5499ad87a50e9da9cd9850c"
+    "with_runtime.gte": 60,
+    api_key: "f4ff8d4cb5499ad87a50e9da9cd9850c",
   };
 
   if (genre) {
@@ -36,7 +36,7 @@ export const fetchMovies = async ({ year, genre }, dispatch) => {
 export const fetchMovieDetails = async movieId => {
   let params = {
     language: "en_US",
-    api_key: "f4ff8d4cb5499ad87a50e9da9cd9850c"
+    api_key: "f4ff8d4cb5499ad87a50e9da9cd9850c",
   };
 
   const query = querystring.stringify(params);
@@ -54,7 +54,7 @@ export const fetchMovieDetails = async movieId => {
 export const fetchGenres = async dispatch => {
   let params = {
     api_key: "f4ff8d4cb5499ad87a50e9da9cd9850c",
-    language: "en-US"
+    language: "en-US",
   };
 
   const query = querystring.stringify(params);

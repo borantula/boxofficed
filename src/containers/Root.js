@@ -36,9 +36,7 @@ class Root extends Component {
     return (
       <div className="homepage">
         <Helmet>
-          <title>
-            Money Maker Movies - Masses could never be wrong, right!
-          </title>
+          <title>Box Officed - Masses could never be wrong, right!</title>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -56,7 +54,7 @@ class Root extends Component {
           gutterBottom
           color="textPrimary"
         >
-          Money Maker Movies
+          Box Officed
         </Typography>
 
         <Typography variant="headline" color="textSecondary">
@@ -71,6 +69,7 @@ class Root extends Component {
         />
 
         <FilterSentence genre={genre} year={year} genres={genres} />
+
         <MovieList
           movies={movies}
           savedMovies={savedMovies}

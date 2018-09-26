@@ -7,8 +7,7 @@ import PropTypes from "prop-types";
 import ScrollToTop from "react-router-scroll-top";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import deepOrange from "@material-ui/core/colors/deepOrange";
-import blue from "@material-ui/core/colors/blue";
+import * as colors from "@material-ui/core/colors";
 import Root from "./containers/Root";
 import Header from "./components/layout/Header";
 import MovieDetailPage from "./containers/Movie/DetailPage";
@@ -21,11 +20,12 @@ import {
   withInitialRemoteAppData,
   // withGoogleAds,
 } from "./components/hoc/";
+
 //TODO move theme to HoC
 const theme = createMuiTheme({
   palette: {
-    primary: deepOrange,
-    secondary: blue,
+    primary: colors.blueGrey,
+    secondary: colors.indigo,
   },
 });
 
@@ -41,7 +41,7 @@ class App extends Component {
           <MuiThemeProvider theme={theme}>
             <CssBaseline>
               <Header
-                title="Money Maker Movies"
+                title="Box Officed"
                 routes={routes}
                 user={this.props.user}
                 savedMovies={this.props.savedMovies}
