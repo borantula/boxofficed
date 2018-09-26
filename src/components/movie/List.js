@@ -4,7 +4,7 @@ import MovieListItem from "../movie/ListItem";
 //import MovieListItemAd from "../movie/ListItemAd";
 import "./List.css";
 
-const MovieList = ({ movies = [], savedMovies }) => {
+const MovieList = ({ movies = [] }) => {
   //let counter = 0;
   return (
     <div className="movie-list">
