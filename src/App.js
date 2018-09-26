@@ -8,7 +8,7 @@ import ScrollToTop from "react-router-scroll-top";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import * as colors from "@material-ui/core/colors";
-import Root from "./containers/Root";
+import HomePage from "./containers/HomePage";
 import Header from "./components/layout/Header";
 import MovieDetailPage from "./containers/Movie/DetailPage";
 import UserSignInPage from "./containers/User/SignInPage";
@@ -48,7 +48,7 @@ class App extends Component {
               <div className="site-content">
                 <ScrollToTop>
                   <Switch>
-                    <Route path={routes.HOME} exact component={Root} />
+                    <Route path={routes.HOME} exact component={HomePage} />
                     <Route path={routes.MOVIE} component={MovieDetailPage} />
                     <Route
                       path={routes.SIGNIN}

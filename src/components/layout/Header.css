@@ -3,11 +3,11 @@
   font-family: "Cinzel", "Times New Roman", Arial, serif;
   font-weight: 400;
   letter-spacing: 4px;
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
 }
 .site-title:hover {
-  color: #e5e5e5;
+  color: #333333;
 }
 
 .my-list-btn {

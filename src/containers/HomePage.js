@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
+import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 import MovieList from "../components/movie/List";
 import MovieListFilters from "../components/movie/ListFilters";
 import FilterSentence from "../components/movie/FilterSentence";
@@ -10,10 +13,16 @@ import {
   boundChangeYear,
   boundChangeGenre,
   boundResetDisplayedMovie,
-} from "../actions/";
+} from "../actions";
 import { movieAddedToSavedList, movieRemovedFromSavedList } from "../actions";
 
-class Root extends Component {
+const styles = {
+  filterCard: {
+    display: "inline-flex",
+  },
+};
+
+class HomePage extends Component {
   handleYearChange = e => this.props.yearChanged(e.target.value);
   handleGenreChange = e => this.props.genreChanged(e.target.value);
 
@@ -31,6 +40,7 @@ class Root extends Component {
       movieAddedToSavedList,
       movieRemovedFromSavedList,
       savedMovies,
+      classes,
     } = this.props;
 
     return (
@@ -48,27 +58,25 @@ class Root extends Component {
           />
         </Helmet>
 
-        <Typography
-          variant="display2"
-          className="main-title"
-          gutterBottom
-          color="textPrimary"
-        >
-          Box Officed
-        </Typography>
+        <Card className={classes.filterCard}>
+          <CardContent>
+            <Typography variant="display1" gutterBottom color="textPrimary">
+              Movies sorted by their box office revenue
+            </Typography>
 
-        <Typography variant="headline" color="textSecondary">
-          Masses could never be wrong, right!
-        </Typography>
-        <MovieListFilters
-          handleYearChange={this.handleYearChange}
-          handleGenreChange={this.handleGenreChange}
-          genres={genres}
-          genre={genre}
-          year={year}
-        />
-
-        <FilterSentence genre={genre} year={year} genres={genres} />
+            <Typography variant="headline" color="textSecondary">
+              Because masses could never be wrong, right!
+            </Typography>
+            <MovieListFilters
+              handleYearChange={this.handleYearChange}
+              handleGenreChange={this.handleGenreChange}
+              genres={genres}
+              genre={genre}
+              year={year}
+            />
+            <FilterSentence genre={genre} year={year} genres={genres} />
+          </CardContent>
+        </Card>
 
         <MovieList
           movies={movies}
@@ -81,7 +89,7 @@ class Root extends Component {
   }
 }
 
-Root.propTypes = {
+HomePage.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
   savedMovies: PropTypes.arrayOf(PropTypes.object).isRequired,
   year: PropTypes.number.isRequired,
@@ -116,4 +124,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Root);
+)(withStyles(styles)(HomePage));

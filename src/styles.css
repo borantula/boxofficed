@@ -5,13 +5,7 @@ body {
   background: #fff;
   color: #474747;
   margin: 0;
-  padding: 80px 0 0;
-}
-
-select {
-  height: 2em;
-  padding: 0 1em;
-  margin: 0 1em;
+  padding: 65px 0 0;
 }
 
 .movie-list-filters {
@@ -25,6 +19,9 @@ img {
 
 .site-content {
   text-align: center;
+  background: url(./images/backslant-home-top.svg) no-repeat 50% 0;
+  background-size: 100%;
+  padding: 50px 0 0;
 }
 
 h1.main-title {

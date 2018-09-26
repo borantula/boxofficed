@@ -16,19 +16,17 @@ const styles = {
   grow: {
     flexGrow: 1,
   },
+  appbar: {
+    backgroundColor: "white",
+  },
 };
 
 const Header = ({ title = "", user, routes, savedMovies, classes }) => {
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="fixed" className={classes.appbar}>
         <Toolbar>
-          <Typography
-            variant="title"
-            color="inherit"
-            noWrap
-            className={classes.grow}
-          >
+          <Typography variant="title" noWrap className={classes.grow}>
             <Link className="site-title" to={routes.HOME}>
               {title}
             </Link>
@@ -42,7 +40,7 @@ const Header = ({ title = "", user, routes, savedMovies, classes }) => {
             {user.isLoggedIn === true && (
               <Badge color="secondary" badgeContent={savedMovies.length}>
                 <Link className="my-list-btn" to={routes.MYLIST}>
-                  <Button color="inherit">My List</Button>
+                  <Button color="primary">My List</Button>
                 </Link>
               </Badge>
             )}
