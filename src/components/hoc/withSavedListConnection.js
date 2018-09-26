@@ -23,10 +23,6 @@ function withSavedListConnection(
       this.state = { initiallyFetchedFromApi: false };
     }
 
-    componentDidMount() {
-      console.log(this.props);
-    }
-
     componentDidUpdate(prevProps) {
       this.checkUserChange(prevProps);
       this.checkSavedListChange(prevProps);
@@ -38,7 +34,7 @@ function withSavedListConnection(
         prevProps.user.isLoggedIn === false
       ) {
         //wow now user is logged in!!
-        console.log("User is logged in now: ", this.props.user.isLoggedIn);
+
         this.props.fetchSavedList(this.props.user.data);
       }
     }

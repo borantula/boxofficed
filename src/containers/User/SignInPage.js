@@ -26,7 +26,6 @@ class UserSignInPage extends Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.state.isSignedIn) {
-      console.log("here is a user");
     }
   }
 

@@ -5,10 +5,9 @@ export const checkUser = function() {
 
   if (user) {
     // User is signed in.
-    console.log("here user", user);
   } else {
     // No user is signed in.
-    console.log("here no user", user);
+
     var provider = new auth.GoogleAuthProvider();
     provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
     firebase
@@ -19,7 +18,7 @@ export const checkUser = function() {
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        console.log("now user", user);
+
         // ...
       })
       .catch(function(error) {

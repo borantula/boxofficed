@@ -67,7 +67,6 @@ export const boundResetDisplayedMovie = () => dispatch => {
 
 export const fetchMovieIfNeeded = movieId => (dispatch, getState) => {
   const selected = getState()["movies"].find(movie => {
-    console.log(movie, movie.id, Number(movieId));
     return movie.id === Number(movieId);
   });
   if (selected) {
