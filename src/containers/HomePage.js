@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -14,7 +14,6 @@ import {
   boundChangeGenre,
   boundResetDisplayedMovie,
 } from "../actions";
-import { movieAddedToSavedList, movieRemovedFromSavedList } from "../actions";
 
 const styles = {
   filterCard: {
@@ -37,9 +36,7 @@ class HomePage extends Component {
       genres = [],
       genre,
       year,
-      movieAddedToSavedList,
-      movieRemovedFromSavedList,
-      savedMovies,
+
       classes,
     } = this.props;
 
@@ -78,12 +75,7 @@ class HomePage extends Component {
           </CardContent>
         </Card>
 
-        <MovieList
-          movies={movies}
-          savedMovies={savedMovies}
-          movieAddedToSavedList={movieAddedToSavedList}
-          movieRemovedFromSavedList={movieRemovedFromSavedList}
-        />
+        <MovieList movies={movies} />
       </div>
     );
   }
@@ -91,25 +83,21 @@ class HomePage extends Component {
 
 HomePage.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-  savedMovies: PropTypes.arrayOf(PropTypes.object).isRequired,
   year: PropTypes.number.isRequired,
   genre: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   genres: PropTypes.arrayOf(PropTypes.object).isRequired,
   resetDisplayedMovie: PropTypes.func.isRequired,
   yearChanged: PropTypes.func.isRequired,
   genreChanged: PropTypes.func.isRequired,
-  movieAddedToSavedList: PropTypes.func.isRequired,
-  movieRemovedFromSavedList: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { movies, year, genres, genre, savedMovies } = state;
+  const { movies, year, genres, genre } = state;
   return {
     movies,
     year,
     genres,
     genre,
-    savedMovies,
   };
 };
 
@@ -117,8 +105,6 @@ const mapDispatchToProps = {
   resetDisplayedMovie: boundResetDisplayedMovie,
   yearChanged: boundChangeYear,
   genreChanged: boundChangeGenre,
-  movieAddedToSavedList,
-  movieRemovedFromSavedList,
 };
 
 export default connect(

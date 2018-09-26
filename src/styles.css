@@ -5,7 +5,13 @@ body {
   background: #fff;
   color: #474747;
   margin: 0;
-  padding: 65px 0 0;
+  padding: 56px 0 0;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 65px 0 0;
+  }
 }
 
 .movie-list-filters {
@@ -26,4 +32,8 @@ img {
 
 h1.main-title {
   font-family: "Cinzel", "Times New Roman", Arial, serif;
+}
+
+.color-white {
+  color: White;
 }

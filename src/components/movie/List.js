@@ -4,12 +4,7 @@ import MovieListItem from "../movie/ListItem";
 //import MovieListItemAd from "../movie/ListItemAd";
 import "./List.css";
 
-const MovieList = ({
-  movies = [],
-  movieAddedToSavedList,
-  movieRemovedFromSavedList,
-  savedMovies,
-}) => {
+const MovieList = ({ movies = [], savedMovies }) => {
   //  let counter = 0;
   return (
     <div className="movie-list">
@@ -18,12 +13,7 @@ const MovieList = ({
           //counter++;
           return (
             <React.Fragment key={movie.id}>
-              <MovieListItem
-                movie={movie}
-                savedMovies={savedMovies}
-                movieAddedToSavedList={movieAddedToSavedList}
-                movieRemovedFromSavedList={movieRemovedFromSavedList}
-              />
+              <MovieListItem movie={movie} />
             </React.Fragment>
           );
         })}
@@ -33,9 +23,6 @@ const MovieList = ({
 
 MovieList.propTypes = {
   movies: PropTypes.array.isRequired,
-  savedMovies: PropTypes.array.isRequired,
-  movieAddedToSavedList: PropTypes.func.isRequired,
-  movieRemovedFromSavedList: PropTypes.func.isRequired,
 };
 
 export default MovieList;

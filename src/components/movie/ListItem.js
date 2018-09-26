@@ -1,12 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
-import PropTypes from "prop-types";
 import truncate from "lodash/truncate";
-import Button from "@material-ui/core/Button";
-import Icon from "@material-ui/core/Icon";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import AddRemoveListButtons from "./AddRemoveListButtons";
 
 const styles = {
   card: {
@@ -19,7 +18,6 @@ const MovieListItem = props => {
   const classes = props.classes;
   const desc = truncate(movie.overview, { length: 180, separator: " " });
   const year = movie.release_date.split("-")[0];
-  const isInBag = props.savedMovies.find(saved => movie.id === saved.id);
   return (
     <Card className={classes.card}>
       <CardContent>
@@ -36,29 +34,7 @@ const MovieListItem = props => {
               alt={movie.title}
             />
           </Link>
-          <div>
-            {!isInBag && (
-              <Button
-                variant="outlined"
-                color="primary"
-                size="small"
-                onClick={() => props.movieAddedToSavedList(movie)}
-              >
-                <Icon>playlist_add</Icon> Put it in my bag!
-              </Button>
-            )}
-
-            {isInBag && (
-              <Button
-                variant="outlined"
-                size="small"
-                onClick={() => props.movieRemovedFromSavedList(movie)}
-              >
-                <Icon>playlist_add_check</Icon>
-                Take it outta my bag!
-              </Button>
-            )}
-          </div>
+          <AddRemoveListButtons movie={movie} />
           <h3 className="movie-item__title">
             <Link
               to={{
@@ -77,9 +53,6 @@ const MovieListItem = props => {
 
 MovieListItem.propTypes = {
   movie: PropTypes.object.isRequired,
-  savedMovies: PropTypes.array.isRequired,
-  movieAddedToSavedList: PropTypes.func.isRequired,
-  movieRemovedFromSavedList: PropTypes.func.isRequired,
 };
 
 //TODO: should not get it via connect but via props from parent

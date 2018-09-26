@@ -17,6 +17,13 @@ class MovieDetailPage extends Component {
 
   render() {
     const movie = this.props.displayedMovie;
+    const BackLink = (
+      <Link to="/" className="detail-back-link">
+        <Button variant="contained" color="primary">
+          &laquo; Back
+        </Button>
+      </Link>
+    );
     return (
       <div>
         {movie && (
@@ -25,13 +32,7 @@ class MovieDetailPage extends Component {
           </Helmet>
         )}
 
-        <Link to="/">
-          <Button variant="outlined" color="primary">
-            &laquo; Back
-          </Button>
-        </Link>
-
-        {movie && <MovieDetail movie={movie} />}
+        {movie && <MovieDetail movie={movie} backLink={BackLink} />}
       </div>
     );
   }

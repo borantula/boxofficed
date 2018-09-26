@@ -17,27 +17,40 @@ class MyListPage extends Component {
     } = this.props;
     return (
       <React.Fragment>
-        <Typography
-          variant="display2"
-          align="center"
-          color="textPrimary"
-          gutterBottom
-        >
-          My List
-        </Typography>
-        {movies.length > 0 && (
-          <Typography align="center" color="textPrimary" gutterBottom>
-            Movies you saved hoping you might watch some day...
+        <div className="color-white">
+          <Typography
+            variant="display2"
+            className="color-white"
+            align="center"
+            color="inherit"
+            gutterBottom
+          >
+            My List
           </Typography>
-        )}
-        {movies.length === 0 && (
-          <div>
-            <Typography align="center" color="textPrimary" gutterBottom>
-              You have nothing in your list yet... Go, go with the wind and save
-              some movies before it's too late!
+          {movies.length > 0 && (
+            <Typography
+              align="center"
+              className="color-white"
+              color="inherit"
+              gutterBottom
+            >
+              Movies you saved hoping you might watch some day...
             </Typography>
-          </div>
-        )}
+          )}
+          {movies.length === 0 && (
+            <div>
+              <Typography
+                align="center"
+                className="color-white"
+                color="inherit"
+                gutterBottom
+              >
+                You have nothing in your list yet... Go, go with the wind and
+                save some movies before it's too late!
+              </Typography>
+            </div>
+          )}
+        </div>
         <MovieList
           movies={movies}
           savedMovies={movies}

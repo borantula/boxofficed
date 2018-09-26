@@ -23,7 +23,7 @@ import {
 //TODO move theme to HoC
 const theme = createMuiTheme({
   palette: {
-    primary: colors.blueGrey,
+    primary: colors.purple,
     secondary: colors.indigo,
   },
 });

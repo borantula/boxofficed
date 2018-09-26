@@ -16,3 +16,23 @@
     width: 50%;
   }
 }
+
+.detail-back-link {
+  text-decoration: none;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.movie-detail__list-btn {
+  margin: 0 0 20px;
+}
+
+.movie-detail__list-btn-2 {
+  margin: 20px 0 20px;
+}
+
+.movie-detail__meta {
+  margin: 20px 0 10px;
+}
