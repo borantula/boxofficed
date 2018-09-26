@@ -31,7 +31,7 @@ const theme = createMuiTheme({
 
 class App extends Component {
   componentDidMount() {
-    document.title = "Money Maker Movies";
+    document.title = "Box Officed!";
   }
 
   render() {
