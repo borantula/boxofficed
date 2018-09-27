@@ -20,20 +20,19 @@ const MovieListItem = props => {
   const year = movie.release_date.split("-")[0];
   return (
     <Card className={classes.card}>
-      <CardContent>
-        <div className="movie-item">
-          <Link
-            to={{
-              pathname: `/movie/${movie.id}`,
-            }}
-          >
-            <img
-              className="movie-item__poster"
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              width="150"
-              alt={movie.title}
-            />
-          </Link>
+      <div className="movie-item">
+        <Link
+          to={{
+            pathname: `/movie/${movie.id}`,
+          }}
+        >
+          <img
+            className="movie-item__poster"
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+          />
+        </Link>
+        <CardContent>
           <AddRemoveListButtons movie={movie} />
           <h3 className="movie-item__title">
             <Link
@@ -45,8 +44,8 @@ const MovieListItem = props => {
             </Link>
           </h3>
           <div className="movie-item__desc">{desc}</div>
-        </div>
-      </CardContent>
+        </CardContent>
+      </div>
     </Card>
   );
 };

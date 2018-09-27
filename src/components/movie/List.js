@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import MovieListItem from "../movie/ListItem";
 //import MovieListItemAd from "../movie/ListItemAd";
-import "./List.css";
+import "./List.scss";
 
 const MovieList = ({ movies = [] }) => {
   //let counter = 0;

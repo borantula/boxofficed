@@ -5,9 +5,9 @@
   letter-spacing: 4px;
   color: #000000;
   text-decoration: none;
-}
-.site-title:hover {
-  color: #333333;
+  &:hover {
+    color: #333333;
+  }
 }
 
 .my-list-btn {
