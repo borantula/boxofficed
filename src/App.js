@@ -30,7 +30,8 @@ const theme = createMuiTheme({
 
 class App extends Component {
   componentDidMount() {
-    document.title = "Box Officed!";
+    document.title =
+      "Box Officed! | Movies ranked by their revenues, because masses cannot be wrong, right?";
   }
 
   render() {
