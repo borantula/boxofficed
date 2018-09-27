@@ -35,18 +35,18 @@ class MyListPage extends Component {
               color="inherit"
               gutterBottom
             >
-              My List
+              My Bag
             </Typography>
             {movies.length > 0 && (
               <Typography align="center" color="inherit" gutterBottom>
-                Movies you saved hoping you might watch some day...
+                Movies you bagged hoping you might watch some day...
               </Typography>
             )}
             {movies.length === 0 && (
               <div>
                 <Typography align="center" color="inherit" gutterBottom>
-                  You have nothing in your list yet... Go, go with the wind and
-                  save some movies before it's too late!
+                  You have nothing in your bag yet... Go, go with the wind and
+                  bag some movies before it's too late!
                 </Typography>
               </div>
             )}
