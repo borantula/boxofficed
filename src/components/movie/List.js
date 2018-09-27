@@ -14,7 +14,6 @@ const MovieList = ({ movies = [] }) => {
           return (
             <React.Fragment key={movie.id}>
               <MovieListItem movie={movie} />
-              {counter % 7 === 0 && <MovieListItemAd />}
             </React.Fragment>
           );
         })}
