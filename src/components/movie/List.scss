@@ -41,6 +41,9 @@
 @media (min-width: 600px) {
   .movie-list {
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0;
+    grid-auto-columns: auto;
+    padding: 0 0 20px;
   }
 }
 
@@ -62,9 +65,12 @@
 /*Desktop Overrides*/
 @media (min-width: 1400px) {
   .movie-list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 1700px) {
+  .movie-list {
     grid-template-columns: repeat(6, 1fr);
-    grid-gap: 0;
-    grid-auto-columns: auto;
-    padding: 0 0 20px;
   }
 }
