@@ -7,7 +7,6 @@ import thunk from "redux-thunk";
 import reducer from "./reducers";
 import App from "./App";
 import "./styles.css";
-//import "./images/boxofficed.png";
 
 const middleware = [thunk];
 if (process.env.NODE_ENV !== "production") {
