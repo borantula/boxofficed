@@ -41,7 +41,7 @@ class App extends Component {
           <MuiThemeProvider theme={theme}>
             <CssBaseline>
               <Header
-                title="Box Officed"
+                title="BoxOfficed"
                 routes={routes}
                 user={this.props.user}
                 savedMovies={this.props.savedMovies}
