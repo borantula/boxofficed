@@ -6,6 +6,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   root: {
@@ -18,6 +19,9 @@ const styles = theme => ({
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
+  },
+  buttonContainer: {
+    margin: "20px 0",
   },
 });
 
@@ -70,6 +74,11 @@ const MovieListFilters = ({
         </NativeSelect>
         <FormHelperText>What kinda?</FormHelperText>
       </FormControl>
+      <div className={classes.buttonContainer}>
+        <Button variant="raised" color="secondary">
+          Random Combination
+        </Button>
+      </div>
     </div>
   );
 };
@@ -80,6 +89,7 @@ PropTypes.propTypes = {
   genres: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   year: PropTypes.number.isRequired,
   genre: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(MovieListFilters);
