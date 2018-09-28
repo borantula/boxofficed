@@ -43,7 +43,10 @@ class HomePage extends Component {
     return (
       <div className="homepage">
         <Helmet>
-          <title>Box Officed - Masses could never be wrong, right!</title>
+          <title>
+            BoxOfficed! | Movies ranked by their revenues, because masses cannot
+            be wrong, right?
+          </title>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -58,7 +61,7 @@ class HomePage extends Component {
         <Card className={classes.filterCard}>
           <CardContent>
             <Typography variant="display1" gutterBottom color="textPrimary">
-              Movies sorted by their box office revenue
+              We ranked movies by their revenues
             </Typography>
 
             <Typography variant="headline" color="textSecondary">
