@@ -44,8 +44,8 @@ class HomePage extends Component {
       <div className="homepage">
         <Helmet>
           <title>
-            BoxOfficed! | Movies ranked by their revenues, because masses cannot
-            be wrong, right?
+            Box Officed! | Movies ranked by their revenues, because masses
+            cannot be wrong, right?
           </title>
           <meta
             name="viewport"

@@ -28,7 +28,7 @@ class MovieDetailPage extends Component {
       <div>
         {movie && (
           <Helmet>
-            <title>{movie.title} - Money Maker Movies</title>
+            <title>{movie.title} - Box Officed!</title>
           </Helmet>
         )}
 
