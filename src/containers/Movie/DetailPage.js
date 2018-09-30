@@ -18,13 +18,15 @@ class MovieDetailPage extends Component {
   }
 
   triggerGoogleAnalytics() {
-    window.dataLayer.push({
+    const data = {
       event: "pageview",
       page: {
         path: this.props.match.url,
         title: document.title,
       },
-    });
+    };
+    console.log(data);
+    window.dataLayer.push(data);
   }
 
   render() {
