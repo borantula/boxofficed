@@ -9,6 +9,7 @@ import "./Detail.css";
 const MovieDetail = ({ movie, backLink }) => {
   const posterPath = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   const backdropPath = `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`;
+  const year = movie.release_date.split("-")[0];
 
   return (
     <div className="movie-detail">
@@ -29,6 +30,9 @@ const MovieDetail = ({ movie, backLink }) => {
           />
           <div className="movie-detail__meta">
             <Typography variant="title" gutterBottom>
+              Year: {year}
+            </Typography>
+            <Typography variant="title" gutterBottom>
               Budget: ${movie.budget && movie.budget.toLocaleString("en")}
             </Typography>
             <Typography variant="title" gutterBottom>
@@ -37,6 +41,15 @@ const MovieDetail = ({ movie, backLink }) => {
             <Typography variant="title" gutterBottom>
               Runtime: {movie.runtime} min.
             </Typography>
+
+            {movie.imdb_id && (
+              <a
+                href={`https://www.imdb.com/title/${movie.imdb_id}`}
+                target="_blank"
+              >
+                See on IMDB
+              </a>
+            )}
           </div>
 
           <div className="movie-detail__list-btn-2">
