@@ -15,11 +15,12 @@ Website: https://boxofficed.com/
 - [x] Display movie details on detail page
 - [x] Store selected movies
 - [x] Handle if movie link is directly used
-- [ ] Put movie names as slug to url
+- [x] Put movie names as slug to url
 - [x] Add years next to titles
 - [ ] Add a Random button to filters
 - [ ] Tidy up reducers and actions
 - [ ] Write tests
 - [ ] Handle movie list when user is a guest then logs in. We should have a merge mechanism
-- [ ] Move some more api functionality like retrieving genre lists etc to HOC
+- [x] Move some more api functionality like retrieving genre lists etc to HOC
 - [ ] Add pagination
+- [ ] Scroll to movie list after the category selection
