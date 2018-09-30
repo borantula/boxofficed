@@ -30,10 +30,11 @@ const MovieListFilters = ({
   handleGenreChange,
   genres,
   year,
+  years,
   genre,
   classes,
+  requestRandomList,
 }) => {
-  const thisYear = new Date().getFullYear();
   return (
     <div className="movie-list-filters">
       <FormControl className={classes.formControl}>
@@ -43,13 +44,9 @@ const MovieListFilters = ({
           onChange={handleYearChange}
           input={<Input name="year" id="age-native-helper" />}
         >
-          <option value={thisYear}>This year</option>
-          <option value={thisYear - 1}>Since {thisYear - 1}</option>
-          <option value={thisYear - 5}>Last 5 year</option>
-          {[2010, 2000, 1990, 1980, 1970, 1960, 1950].map(value => (
-            <option key={value} value={value}>
-              {value}
-              's
+          {years.map(value => (
+            <option key={value.year} value={value.year}>
+              {value.title}
             </option>
           ))}
         </NativeSelect>
@@ -75,8 +72,13 @@ const MovieListFilters = ({
         <FormHelperText>What kinda?</FormHelperText>
       </FormControl>
       <div className={classes.buttonContainer}>
-        <Button variant="raised" color="secondary">
-          Random Combination
+        <Button
+          variant="raised"
+          size="small"
+          color="secondary"
+          onClick={() => requestRandomList()}
+        >
+          Make Random Combination
         </Button>
       </div>
     </div>
@@ -86,7 +88,9 @@ const MovieListFilters = ({
 PropTypes.propTypes = {
   handleYearChange: PropTypes.func.isRequired,
   handleGenreChange: PropTypes.func.isRequired,
+  requestRandomList: PropTypes.func.isRequired,
   genres: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  years: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   year: PropTypes.number.isRequired,
   genre: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   classes: PropTypes.object.isRequired,

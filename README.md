@@ -24,3 +24,5 @@ Website: https://boxofficed.com/
 - [x] Move some more api functionality like retrieving genre lists etc to HOC
 - [ ] Add pagination
 - [ ] Scroll to movie list after the category selection
+- [ ] Filtering to create url params to make them indexable
+- [ ] Create a sitemap

@@ -46,6 +46,7 @@ const MovieDetail = ({ movie, backLink }) => {
               <a
                 href={`https://www.imdb.com/title/${movie.imdb_id}`}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 See on IMDB
               </a>

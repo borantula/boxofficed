@@ -15,6 +15,7 @@ import {
   boundChangeYear,
   boundChangeGenre,
   boundResetDisplayedMovie,
+  requestRandomList,
 } from "../actions";
 
 const styles = {
@@ -61,14 +62,7 @@ class HomePage extends Component {
   }
 
   render() {
-    const {
-      movies,
-      genres = [],
-      genre,
-      year,
-
-      classes,
-    } = this.props;
+    const { movies, genres = [], genre, year, years, classes } = this.props;
 
     return (
       <div className="homepage">
@@ -100,7 +94,9 @@ class HomePage extends Component {
             <MovieListFilters
               handleYearChange={this.handleYearChange}
               handleGenreChange={this.handleGenreChange}
+              requestRandomList={this.props.requestRandomList}
               genres={genres}
+              years={years}
               genre={genre}
               year={year}
             />
@@ -119,18 +115,21 @@ HomePage.propTypes = {
   year: PropTypes.number.isRequired,
   genre: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+  years: PropTypes.arrayOf(PropTypes.object).isRequired,
   resetDisplayedMovie: PropTypes.func.isRequired,
   yearChanged: PropTypes.func.isRequired,
   genreChanged: PropTypes.func.isRequired,
+  requestRandomList: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { movies, year, genres, genre } = state;
+  const { movies, year, genres, genre, years } = state;
   return {
     movies,
     year,
     genres,
     genre,
+    years,
   };
 };
 
@@ -138,6 +137,7 @@ const mapDispatchToProps = {
   resetDisplayedMovie: boundResetDisplayedMovie,
   yearChanged: boundChangeYear,
   genreChanged: boundChangeGenre,
+  requestRandomList,
 };
 
 export default compose(

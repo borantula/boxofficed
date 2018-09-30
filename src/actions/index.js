@@ -57,6 +57,7 @@ export const boundChangeGenre = genre => (dispatch, getState) => {
   dispatch(changeGenre(parseInt(genre, 10)));
   fetchMovies(getState(), dispatch);
 };
+
 export const boundGetGenreList = () => dispatch => {
   fetchGenres(dispatch);
 };
@@ -80,4 +81,15 @@ export const fetchMovieIfNeeded = movieId => (dispatch, getState) => {
 
 export const setCurrentUser = userData => dispatch => {
   dispatch(userLoggedIn(userData));
+};
+
+export const requestRandomList = () => (dispatch, getState) => {
+  const genres = getState().genres;
+  const years = getState().years;
+  const year = years[Math.floor(Math.random() * years.length)];
+  const genre = genres[Math.floor(Math.random() * genres.length)];
+
+  dispatch(changeYear(parseInt(year.year, 10)));
+  dispatch(changeGenre(parseInt(genre.id, 10)));
+  fetchMovies(getState(), dispatch);
 };

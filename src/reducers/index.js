@@ -89,11 +89,14 @@ const savedMovies = (state = initialState.savedMovies, action) => {
   }
 };
 
+const years = (state = initialState.years) => state;
+
 const rootReducer = combineReducers({
   movies,
   year,
   genres,
   genre,
+  years,
   displayedMovie,
   currentUser,
   savedMovies,
