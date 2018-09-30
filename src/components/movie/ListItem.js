@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import truncate from "lodash/truncate";
+import slugify from "slugify";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import AddRemoveListButtons from "./AddRemoveListButtons";
@@ -18,12 +19,16 @@ const MovieListItem = props => {
   const classes = props.classes;
   const desc = truncate(movie.overview, { length: 180, separator: " " });
   const year = movie.release_date.split("-")[0];
+  const movieSlug = slugify(movie.title, {
+    lower: true,
+    remove: /[*+~.()'"!:@]/g,
+  });
   return (
     <Card className={classes.card}>
       <div className="movie-item">
         <Link
           to={{
-            pathname: `/movie/${movie.id}`,
+            pathname: `/movie/${movie.id}/${movieSlug}`,
           }}
         >
           <img
