@@ -91,7 +91,7 @@ class HomePage extends Component {
         <Card className={classes.filterCard}>
           <CardContent>
             <Typography variant="display1" gutterBottom color="textPrimary">
-              We ranked movies by their revenues
+              Movies ranked by their revenues
             </Typography>
 
             <Typography variant="headline" color="textSecondary">
