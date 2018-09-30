@@ -33,7 +33,20 @@ class HomePage extends Component {
     this.props.resetDisplayedMovie();
     this.props.yearChanged(this.props.year);
 
-    this.triggerGoogleAnalytics();
+    this.setState({
+      doneRender: false,
+    });
+  }
+
+  componentDidUpdate() {
+    if (this.state.doneRender === false) {
+      this.setState({
+        doneRender: true,
+      });
+
+      this.triggerGoogleAnalytics();
+      console.log(document.title);
+    }
   }
 
   triggerGoogleAnalytics() {
@@ -44,7 +57,7 @@ class HomePage extends Component {
         title: document.title,
       },
     };
-    console.log(data);
+
     window.dataLayer.push(data);
   }
 

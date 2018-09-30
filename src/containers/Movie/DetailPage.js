@@ -14,7 +14,21 @@ class MovieDetailPage extends Component {
     const movieId = this.props.match.params.movieId;
     this.props.fetchMovieIfNeeded(movieId);
 
-    this.triggerGoogleAnalytics();
+    this.setState({
+      doneRender: false,
+    });
+
+    document.title = `${this.props.displayedMovie.title} - Box Officed!`;
+  }
+
+  componentDidUpdate() {
+    if (this.state.doneRender === false && this.props.displayedMovie.title) {
+      this.setState({
+        doneRender: true,
+      });
+
+      this.triggerGoogleAnalytics();
+    }
   }
 
   triggerGoogleAnalytics() {
@@ -22,10 +36,10 @@ class MovieDetailPage extends Component {
       event: "pageview",
       page: {
         path: this.props.match.url,
-        title: document.title,
+        title: this.props.displayedMovie.title,
       },
     };
-    console.log(data);
+
     window.dataLayer.push(data);
   }
 
