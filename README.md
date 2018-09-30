@@ -26,3 +26,4 @@ Website: https://boxofficed.com/
 - [ ] Scroll to movie list after the category selection
 - [ ] Filtering to create url params to make them indexable
 - [ ] Create a sitemap
+- [ ] Save lists to localstorage if user is not logged in
