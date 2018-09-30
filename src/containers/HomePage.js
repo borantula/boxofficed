@@ -45,7 +45,6 @@ class HomePage extends Component {
       });
 
       this.triggerGoogleAnalytics();
-      console.log(document.title);
     }
   }
 
