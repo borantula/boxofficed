@@ -37,12 +37,13 @@ class HomePage extends Component {
   }
 
   triggerGoogleAnalytics() {
-    if (window.ga) {
-      window.ga(() => {
-        window.ga("set", "page", this.props.match.url);
-        window.ga("send", "pageview");
-      });
-    }
+    window.dataLayer.push({
+      event: "pageview",
+      page: {
+        path: this.props.match.url,
+        title: document.title,
+      },
+    });
   }
 
   render() {
