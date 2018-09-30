@@ -13,6 +13,13 @@ class MovieDetailPage extends Component {
   componentDidMount() {
     const movieId = this.props.match.params.movieId;
     this.props.fetchMovieIfNeeded(movieId);
+
+    this.triggerGoogleAnalytics();
+  }
+
+  triggerGoogleAnalytics() {
+    window.ga("set", "page", this.props.match.url);
+    window.ga("send", "pageview");
   }
 
   render() {

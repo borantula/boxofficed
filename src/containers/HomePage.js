@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { compose } from "redux";
+import { withRouter } from "react-router";
 import { Helmet } from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -26,8 +28,17 @@ class HomePage extends Component {
   handleGenreChange = e => this.props.genreChanged(e.target.value);
 
   componentDidMount() {
+    document.title =
+      "Box Officed! | Movies ranked by their revenues, because masses cannot be wrong, right?";
     this.props.resetDisplayedMovie();
     this.props.yearChanged(this.props.year);
+
+    this.triggerGoogleAnalytics();
+  }
+
+  triggerGoogleAnalytics() {
+    window.ga("set", "page", this.props.match.url);
+    window.ga("send", "pageview");
   }
 
   render() {
@@ -110,7 +121,11 @@ const mapDispatchToProps = {
   genreChanged: boundChangeGenre,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withStyles(styles)(HomePage));
+export default compose(
+  withRouter,
+  withStyles(styles),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(HomePage);

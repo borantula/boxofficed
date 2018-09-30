@@ -29,11 +29,6 @@ const theme = createMuiTheme({
 });
 
 class App extends Component {
-  componentDidMount() {
-    document.title =
-      "Box Officed! | Movies ranked by their revenues, because masses cannot be wrong, right?";
-  }
-
   render() {
     return (
       <Router>
@@ -81,6 +76,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const ComposedApp = compose(
   // withInitialRemoteAppData,
+  //withRouter,
   withSavedListConnection,
   withAuthentication
   //withGoogleAds
