@@ -19,6 +19,7 @@ class MovieDetailPage extends Component {
 
   triggerGoogleAnalytics() {
     if (window.ga) {
+      console.log(this.props.match.url);
       window.ga("set", "page", this.props.match.url);
       window.ga("send", "pageview");
     }
