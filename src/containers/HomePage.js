@@ -37,8 +37,10 @@ class HomePage extends Component {
   }
 
   triggerGoogleAnalytics() {
-    window.ga("set", "page", this.props.match.url);
-    window.ga("send", "pageview");
+    if (window.ga) {
+      window.ga("set", "page", this.props.match.url);
+      window.ga("send", "pageview");
+    }
   }
 
   render() {
