@@ -42,7 +42,7 @@ const MovieListItem = props => {
           <h3 className="movie-item__title">
             <Link
               to={{
-                pathname: `/movie/${movie.id}`,
+                pathname: `/movie/${movie.id}/${movieSlug}`,
               }}
             >
               {movie.title} ({year})
