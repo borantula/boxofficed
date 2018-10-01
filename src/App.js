@@ -40,7 +40,7 @@ class App extends Component {
                 title="Box Officed!"
                 routes={routes}
                 user={this.props.user}
-                savedMovies={this.props.savedMovies}
+                savedMoviesCount={this.props.savedMovies.length}
               />
               <div className="site-content">
                 <ScrollToTop>
