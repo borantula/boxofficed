@@ -13,6 +13,7 @@
     "connected-react-router": "^4.5.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
+    "enzyme-to-json": "^3.3.4",
     "firebase": "^5.4.0",
     "lodash": "4.17.10",
     "node-sass": "^4.9.3",
@@ -50,6 +51,8 @@
     "not op_mini all"
   ],
   "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }
