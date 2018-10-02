@@ -6,10 +6,11 @@ export class FilterSentence extends Component {
     year: PropTypes.number.isRequired,
     genre: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+    movieCount: PropTypes.number.isRequired,
   };
 
   render() {
-    const year = this.props.year;
+    const { movieCount, year } = this.props;
     const genreName = !this.props.genre
       ? ""
       : this.props.genres.find(genre => genre.id === this.props.genre).name;
@@ -33,7 +34,7 @@ export class FilterSentence extends Component {
     yearTexts[thisYear - 1] = "since beginning of last year";
     yearTexts[thisYear - 5] = "last 5 years";
 
-    const text = `You are viewing movies from <strong>${
+    const text = `You are viewing ${movieCount} movies from <strong>${
       yearTexts[year]
     }</strong> ${genreText}`;
     const innerText = { __html: text };

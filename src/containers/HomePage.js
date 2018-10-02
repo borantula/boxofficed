@@ -10,7 +10,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import MovieList from "../components/movie/List";
 import MovieListFilters from "../components/movie/ListFilters";
-import FilterSentence from "../components/movie/FilterSentence";
 import {
   boundChangeYear,
   boundChangeGenre,
@@ -22,6 +21,14 @@ const styles = {
   filterCard: {
     display: "inline-flex",
   },
+  smallerTitle: {
+    fontSize: "2.5em",
+    fontWeight: 300,
+    marginTop: "0.4em",
+  },
+  smallerSubtitle: {
+    fontSize: "1em",
+  },
 };
 
 class HomePage extends Component {
@@ -30,7 +37,7 @@ class HomePage extends Component {
 
   componentDidMount() {
     document.title =
-      "Box Officed! | Movies ranked by their revenues, because masses cannot be wrong, right?";
+      "Box Officed! | Movies ranked by their revenues, because masses cannot be wrong!";
     this.props.resetDisplayedMovie();
     this.props.yearChanged(this.props.year);
 
@@ -75,21 +82,25 @@ class HomePage extends Component {
             name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1"
           />
-          <link
-            rel="icon"
-            type="image/png"
-            href="{require('./favicon-movie.png')}"
-          />
         </Helmet>
 
         <Card className={classes.filterCard}>
           <CardContent>
-            <Typography variant="display1" gutterBottom color="textPrimary">
+            <Typography
+              variant="display1"
+              className={classes.smallerTitle}
+              gutterBottom
+              color="textPrimary"
+            >
               Movies ranked by their revenues
             </Typography>
 
-            <Typography variant="headline" color="textSecondary">
-              Because masses could never be wrong, right!
+            <Typography
+              variant="headline"
+              color="textSecondary"
+              className={classes.smallerSubtitle}
+            >
+              Because masses are never wrong!
             </Typography>
             <MovieListFilters
               handleYearChange={this.handleYearChange}
@@ -99,8 +110,8 @@ class HomePage extends Component {
               years={years}
               genre={genre}
               year={year}
+              movieCount={movies.length}
             />
-            <FilterSentence genre={genre} year={year} genres={genres} />
           </CardContent>
         </Card>
 

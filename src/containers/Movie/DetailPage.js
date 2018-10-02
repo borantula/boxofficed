@@ -47,9 +47,7 @@ class MovieDetailPage extends Component {
     const movie = this.props.displayedMovie;
     const BackLink = (
       <Link to="/" className="detail-back-link">
-        <Button variant="contained" color="primary">
-          &laquo; Back
-        </Button>
+        <Button color="primary">&laquo; Back</Button>
       </Link>
     );
     return (
