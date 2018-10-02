@@ -17,7 +17,7 @@ Website: https://boxofficed.com/
 - [x] Handle if movie link is directly used
 - [x] Put movie names as slug to url
 - [x] Add years next to titles
-- [ ] Add a Random button to filters
+- [x] Add a Random button to filters
 - [ ] Tidy up reducers and actions
 - [ ] Write tests
 - [ ] Handle movie list when user is a guest then logs in. We should have a merge mechanism
