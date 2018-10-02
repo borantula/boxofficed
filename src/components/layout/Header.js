@@ -21,7 +21,7 @@ const styles = {
   },
 };
 
-const Header = ({ title = "", user, routes, savedMovies, classes }) => {
+const Header = ({ title = "", user, routes, savedMoviesCount, classes }) => {
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appbar}>
@@ -38,7 +38,7 @@ const Header = ({ title = "", user, routes, savedMovies, classes }) => {
               </Link>
             )}
 
-            <Badge color="secondary" badgeContent={savedMovies.length}>
+            <Badge color="secondary" badgeContent={savedMoviesCount}>
               <Link className="my-list-btn" to={routes.MYLIST}>
                 <Button color="primary">My Bag</Button>
               </Link>
@@ -55,7 +55,7 @@ Header.propTypes = {
   title: PropTypes.string,
   //Current user object
   user: PropTypes.object.isRequired,
-  savedMovies: PropTypes.array.isRequired,
+  savedMoviesCount: PropTypes.number.isRequired,
   routes: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
 };

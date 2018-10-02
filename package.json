@@ -11,6 +11,8 @@
     "axios": "0.18.0",
     "classnames": "^2.2.6",
     "connected-react-router": "^4.5.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "firebase": "^5.4.0",
     "lodash": "4.17.10",
     "node-sass": "^4.9.3",
@@ -26,6 +28,7 @@
     "react-router-dom": "4.3.1",
     "react-router-scroll-top": "^0.1.1",
     "react-scripts": "2.0.0",
+    "react-test-renderer": "^16.5.2",
     "react-transition-group": "^2.4.0",
     "recompose": "^0.30.0",
     "redux": "4.0.0",
@@ -45,5 +48,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
+  },
+  "setupFiles": ["./src/setupTests.js"]
 }

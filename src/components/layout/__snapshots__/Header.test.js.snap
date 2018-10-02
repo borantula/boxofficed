@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header without user and empty bag should render correctly in "debug" mode 1`] = `
+<Header
+  classes={
+    Object {
+      "appbar": "Header-appbar-3",
+      "grow": "Header-grow-2",
+      "root": "Header-root-1",
+    }
+  }
+  debug={true}
+  routes={
+    Object {
+      "HOME": "/",
+      "MOVIE": "/movie/:movieId/:movieSlug",
+      "MYLIST": "/mylist",
+      "SIGNIN": "/signin",
+    }
+  }
+  savedMoviesCount={0}
+  user={
+    Object {
+      "isLoggedIn": false,
+    }
+  }
+/>
+`;
+
+exports[`Header without user and full bag should render correctly in "debug" mode 1`] = `
+<Header
+  classes={
+    Object {
+      "appbar": "Header-appbar-3",
+      "grow": "Header-grow-2",
+      "root": "Header-root-1",
+    }
+  }
+  debug={true}
+  routes={
+    Object {
+      "HOME": "/",
+      "MOVIE": "/movie/:movieId/:movieSlug",
+      "MYLIST": "/mylist",
+      "SIGNIN": "/signin",
+    }
+  }
+  savedMoviesCount={10}
+  user={
+    Object {
+      "isLoggedIn": false,
+    }
+  }
+/>
+`;

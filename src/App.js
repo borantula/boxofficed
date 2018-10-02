@@ -10,6 +10,7 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import * as colors from "@material-ui/core/colors";
 import HomePage from "./containers/HomePage";
 import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 import MovieDetailPage from "./containers/Movie/DetailPage";
 import UserSignInPage from "./containers/User/SignInPage";
 import MyListPage from "./containers/User/MyListPage";
@@ -39,7 +40,7 @@ class App extends Component {
                 title="Box Officed!"
                 routes={routes}
                 user={this.props.user}
-                savedMovies={this.props.savedMovies}
+                savedMoviesCount={this.props.savedMovies.length}
               />
               <div className="site-content">
                 <ScrollToTop>
@@ -55,6 +56,7 @@ class App extends Component {
                   </Switch>
                 </ScrollToTop>
               </div>
+              <Footer />
             </CssBaseline>
           </MuiThemeProvider>
         </React.Fragment>

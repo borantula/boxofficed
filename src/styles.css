@@ -34,6 +34,21 @@ h1.main-title {
   font-family: "Cinzel", "Times New Roman", Arial, serif;
 }
 
+.font-title {
+  font-family: "Cinzel", "Times New Roman", Arial, serif !important;
+}
+
 .color-white {
   color: White;
+}
+
+
+.site-footer {
+  background: white;
+  padding: 2em 0;
+  border-top: 1px solid #ccc;
+}
+
+.footer-links {
+  color: #333;
 }
