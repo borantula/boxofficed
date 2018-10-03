@@ -45,6 +45,11 @@ export const movieRemovedFromSavedList = movie => ({
   payload: movie,
 });
 
+export const isFetchingMovies = status => ({
+  type: types.FETCHING_MOVIES,
+  payload: status,
+});
+
 /**
  * Dispatch year change and also start fetching movies
  */

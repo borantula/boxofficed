@@ -7,6 +7,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import "./Header.scss";
 
 const styles = {
@@ -21,7 +22,14 @@ const styles = {
   },
 };
 
-const Header = ({ title = "", user, routes, savedMoviesCount, classes }) => {
+const Header = ({
+  title = "",
+  user,
+  routes,
+  savedMoviesCount,
+  isFetchingMovies,
+  classes,
+}) => {
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appbar}>
@@ -46,6 +54,7 @@ const Header = ({ title = "", user, routes, savedMoviesCount, classes }) => {
           </span>
         </Toolbar>
       </AppBar>
+      {isFetchingMovies === true && <LinearProgress color="secondary" />}
     </div>
   );
 };
@@ -57,6 +66,7 @@ Header.propTypes = {
   user: PropTypes.object.isRequired,
   savedMoviesCount: PropTypes.number.isRequired,
   routes: PropTypes.object.isRequired,
+  isFetchingMovies: PropTypes.bool.isRequired,
   classes: PropTypes.object.isRequired,
 };
 

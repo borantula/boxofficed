@@ -1,6 +1,6 @@
 import axios from "axios";
 import querystring from "querystring";
-import { updateMovieList, getGenreList } from "./index";
+import { updateMovieList, getGenreList, isFetchingMovies } from "./index";
 
 export const fetchMovies = async ({ year, genre }, dispatch) => {
   const yearEnd = year + 11;
@@ -24,12 +24,17 @@ export const fetchMovies = async ({ year, genre }, dispatch) => {
 
   const url = `https://api.themoviedb.org/3/discover/movie?${query}`;
 
+  dispatch(isFetchingMovies(true));
   //TODO error handling
   const response = await axios.get(url);
 
   if (response) {
     const movies = response.data.results;
     dispatch(updateMovieList(movies));
+    //just to give a feeling of suspension we give a small latency
+    setTimeout(() => {
+      dispatch(isFetchingMovies(false));
+    }, 200);
   }
 };
 

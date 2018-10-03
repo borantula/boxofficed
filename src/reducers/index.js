@@ -91,6 +91,15 @@ const savedMovies = (state = initialState.savedMovies, action) => {
 
 const years = (state = initialState.years) => state;
 
+const isFetchingMovies = (state = initialState.isFetchingMovies, action) => {
+  switch (action.type) {
+    case types.FETCHING_MOVIES:
+      return !!action.payload;
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   movies,
   year,
@@ -100,6 +109,7 @@ const rootReducer = combineReducers({
   displayedMovie,
   currentUser,
   savedMovies,
+  isFetchingMovies,
 });
 
 export default rootReducer;

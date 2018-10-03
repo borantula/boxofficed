@@ -41,6 +41,7 @@ class App extends Component {
                 routes={routes}
                 user={this.props.user}
                 savedMoviesCount={this.props.savedMovies.length}
+                isFetchingMovies={this.props.isFetchingMovies}
               />
               <div className="site-content">
                 <ScrollToTop>
@@ -74,6 +75,7 @@ App.propTypes = {
 const mapStateToProps = (state, ownProps) => ({
   user: state.currentUser,
   savedMovies: state.savedMovies,
+  isFetchingMovies: state.isFetchingMovies,
 });
 
 const ComposedApp = compose(
