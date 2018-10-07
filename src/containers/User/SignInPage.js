@@ -5,8 +5,18 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { withRouter } from "react-router";
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 import { auth, uiConfig } from "../../app/firebase";
 import { setCurrentUser } from "../../actions/";
+
+const styles = {
+  filterCard: {
+    display: "inline-flex",
+  },
+};
 
 class UserSignInPage extends Component {
   // The component's Local state.
@@ -24,11 +34,6 @@ class UserSignInPage extends Component {
     });
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.state.isSignedIn) {
-    }
-  }
-
   /**
    * Redirects to home if logged in or render signin if user it not loggedin
    */
@@ -38,7 +43,17 @@ class UserSignInPage extends Component {
         {this.state.isSignedIn && <Redirect to="/" />}
 
         {!this.state.isSignedIn && (
-          <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+          <Card className={this.props.classes.filterCard}>
+            <CardContent>
+              <div>
+                <Typography>
+                  Login to do cool stuff like saving movies that makes you say
+                  "yeah I'll definitely watch it"
+                </Typography>
+                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+              </div>
+            </CardContent>
+          </Card>
         )}
       </div>
     );
@@ -58,6 +73,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default compose(
   withRouter,
+  withStyles(styles),
   connect(
     mapStateToProps,
     { setCurrentUser }

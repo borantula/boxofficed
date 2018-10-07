@@ -47,6 +47,11 @@ class App extends Component {
                 <ScrollToTop>
                   <Switch>
                     <Route path={routes.HOME} exact component={HomePage} />
+                    <Route
+                      path={routes.HOME + "home"}
+                      exact
+                      component={HomePage}
+                    />
                     <Route path={routes.MOVIE} component={MovieDetailPage} />
                     <Route
                       path={routes.SIGNIN}
