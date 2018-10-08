@@ -77,7 +77,7 @@ class HomePage extends Component {
           />
           <meta
             property="og:image"
-            content="https://boxofficed.com/boxofficed-image.png"
+            content="https://boxofficed.com/boxofficed-img.png"
           />
         </Helmet>
 
