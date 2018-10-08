@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import { auth } from "../../app/firebase";
 import "./Header.scss";
 
 const styles = {
@@ -51,6 +52,16 @@ const Header = ({
                 <Button color="primary">My Bag</Button>
               </Link>
             </Badge>
+            {user.isLoggedIn === true && (
+              <Button
+                color="primary"
+                onClick={() =>
+                  auth.signOut().then(() => window.location.reload())
+                }
+              >
+                Logout
+              </Button>
+            )}
           </span>
         </Toolbar>
       </AppBar>
