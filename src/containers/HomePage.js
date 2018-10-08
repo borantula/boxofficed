@@ -67,6 +67,18 @@ class HomePage extends Component {
             name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1"
           />
+          <meta property="og:url" content="https://boxofficed.com" />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="Box Officed!" />
+          <meta
+            property="og:description"
+            content="Movies ranked by their revenues, because masses are
+            never wrong!"
+          />
+          <meta
+            property="og:image"
+            content="%PUBLIC_URL%/boxofficed-image.png"
+          />
         </Helmet>
 
         <Card className={classes.filterCard}>
