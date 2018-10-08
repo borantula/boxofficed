@@ -13,34 +13,6 @@ class MovieDetailPage extends Component {
   componentDidMount() {
     const movieId = this.props.match.params.movieId;
     this.props.fetchMovieIfNeeded(movieId);
-
-    this.setState({
-      doneRender: false,
-    });
-
-    document.title = `${this.props.displayedMovie.title} - Box Officed!`;
-  }
-
-  componentDidUpdate() {
-    if (this.state.doneRender === false && this.props.displayedMovie.title) {
-      this.setState({
-        doneRender: true,
-      });
-
-      this.triggerGoogleAnalytics();
-    }
-  }
-
-  triggerGoogleAnalytics() {
-    const data = {
-      event: "pageview",
-      page: {
-        path: this.props.match.url,
-        title: this.props.displayedMovie.title,
-      },
-    };
-
-    window.dataLayer.push(data);
   }
 
   render() {

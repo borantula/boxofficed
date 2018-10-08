@@ -39,7 +39,7 @@ class UserSignInPage extends Component {
    */
   render() {
     return (
-      <div>
+      <div style={{ minHeight: window.innerHeight - 100 }}>
         {this.state.isSignedIn && <Redirect to="/" />}
 
         {!this.state.isSignedIn && (

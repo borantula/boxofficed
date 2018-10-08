@@ -5,11 +5,14 @@ import { compose } from "redux";
 import { withRouter } from "react-router";
 import { Helmet } from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import MovieList from "../components/movie/List";
 import MovieListFilters from "../components/movie/ListFilters";
+import * as routes from "../constants/routes";
 import {
   boundChangeYear,
   boundChangeGenre,
@@ -40,43 +43,25 @@ class HomePage extends Component {
       "Box Officed! | Movies ranked by their revenues, because masses cannot be wrong!";
     this.props.resetDisplayedMovie();
     this.props.yearChanged(this.props.year);
-
-    this.setState({
-      doneRender: false,
-    });
-  }
-
-  componentDidUpdate() {
-    if (this.state.doneRender === false) {
-      this.setState({
-        doneRender: true,
-      });
-
-      this.triggerGoogleAnalytics();
-    }
-  }
-
-  triggerGoogleAnalytics() {
-    const data = {
-      event: "pageview",
-      page: {
-        path: this.props.match.url,
-        title: document.title,
-      },
-    };
-
-    window.dataLayer.push(data);
   }
 
   render() {
-    const { movies, genres = [], genre, year, years, classes } = this.props;
+    const {
+      movies,
+      genres = [],
+      genre,
+      year,
+      years,
+      classes,
+      user,
+    } = this.props;
 
     return (
       <div className="homepage">
         <Helmet>
           <title>
-            Box Officed! | Movies ranked by their revenues, because masses
-            cannot be wrong, right?
+            Box Officed! | Movies ranked by their revenues, because masses are
+            never wrong!
           </title>
           <meta
             name="viewport"
@@ -102,6 +87,21 @@ class HomePage extends Component {
             >
               Because masses are never wrong!
             </Typography>
+
+            {user.isLoggedIn === false && (
+              <div>
+                <Typography style={{ margin: "20px 0" }} color="textPrimary">
+                  Login to do cool stuff like <br />
+                  saving movies that makes you say "yeah I'll definitely watch
+                  it"
+                </Typography>
+                <Link className="my-list-btn" to={routes.SIGNIN}>
+                  <Button color="primary" variant="raised">
+                    Login
+                  </Button>
+                </Link>
+              </div>
+            )}
             <MovieListFilters
               handleYearChange={this.handleYearChange}
               handleGenreChange={this.handleGenreChange}
@@ -141,6 +141,7 @@ const mapStateToProps = (state, ownProps) => {
     genres,
     genre,
     years,
+    user: state.currentUser,
   };
 };
 
