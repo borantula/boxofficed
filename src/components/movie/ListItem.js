@@ -32,13 +32,11 @@ class MovieListItem extends Component {
               pathname: `/movie/${movie.id}/${movieSlug}`,
             }}
           >
-          
-          <img
-            className="movie-item__poster"
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
+            <img
+              className="movie-item__poster"
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
             />
-        
           </Link>
           <CardContent>
             <AddRemoveListButtons movie={movie} />
