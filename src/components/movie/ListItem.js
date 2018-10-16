@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
-import truncate from "lodash/truncate";
+//import truncate from "lodash/truncate";
 import slugify from "slugify";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -18,7 +18,7 @@ class MovieListItem extends Component {
   render() {
     const movie = this.props.movie;
     const classes = this.props.classes;
-    const desc = truncate(movie.overview, { length: 180, separator: " " });
+    //const desc = truncate(movie.overview, { length: 180, separator: " " });
     const year = movie.release_date.split("-")[0];
     const movieSlug = slugify(movie.title, {
       lower: true,
@@ -38,8 +38,8 @@ class MovieListItem extends Component {
               alt={movie.title}
             />
           </Link>
+          <AddRemoveListButtons movie={movie} classes="movie-item__add-btn" />
           <CardContent>
-            <AddRemoveListButtons movie={movie} />
             <h3 className="movie-item__title">
               <Link
                 to={{
@@ -49,7 +49,11 @@ class MovieListItem extends Component {
                 {movie.title} ({year})
               </Link>
             </h3>
-            <div className="movie-item__desc">{desc}</div>
+            <Link
+              to={{
+                pathname: `/movie/${movie.id}/${movieSlug}`,
+              }}
+            />
           </CardContent>
         </div>
       </Card>

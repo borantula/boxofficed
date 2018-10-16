@@ -5,6 +5,9 @@ import { compose } from "redux";
 import { withRouter } from "react-router";
 import { Helmet } from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
 import MovieList from "../components/movie/List";
 import MovieListFilters from "../components/movie/ListFilters";
 import {
@@ -40,15 +43,7 @@ class HomePage extends Component {
   }
 
   render() {
-    const {
-      movies,
-      genres = [],
-      genre,
-      year,
-      years,
-      classes,
-      user,
-    } = this.props;
+    const { movies, genres = [], genre, year, years } = this.props;
 
     const ListFilters = (
       <MovieListFilters
@@ -61,6 +56,20 @@ class HomePage extends Component {
         year={year}
         movieCount={movies.length}
       />
+    );
+
+    const TitleCard = (
+      <Card className="movie-list__title-card">
+        <CardContent className="movie-list__title-card-content">
+          <Typography variant="display1" gutterBottom>
+            Movies ranked by their revenues
+          </Typography>
+
+          <Typography variant="headline">
+            Because masses are never wrong!
+          </Typography>
+        </CardContent>
+      </Card>
     );
 
     return (
@@ -88,7 +97,11 @@ class HomePage extends Component {
           />
         </Helmet>
 
-        <MovieList movies={movies} ListFilters={ListFilters} />
+        <MovieList
+          movies={movies}
+          ListFilters={ListFilters}
+          TitleCard={TitleCard}
+        />
       </div>
     );
   }

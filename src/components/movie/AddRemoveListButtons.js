@@ -13,13 +13,14 @@ const AddRemoveListButtons = ({
   savedMovies,
   movieAddedToSavedList,
   movieRemovedFromSavedList,
+  classes,
 }) => {
   const isInBag = savedMovies.find(saved => movie.id === saved.id);
   return (
-    <div>
+    <div className={classes}>
       {!isInBag && (
         <Button
-          variant="outlined"
+          variant="raised"
           color="primary"
           size="small"
           onClick={() => movieAddedToSavedList(movie)}
@@ -30,7 +31,8 @@ const AddRemoveListButtons = ({
 
       {isInBag && (
         <Button
-          variant="outlined"
+          variant="raised"
+          color="secondary"
           size="small"
           onClick={() => movieRemovedFromSavedList(movie)}
         >
@@ -47,6 +49,7 @@ AddRemoveListButtons.propTypes = {
   savedMovies: PropTypes.array.isRequired,
   movieAddedToSavedList: PropTypes.func.isRequired,
   movieRemovedFromSavedList: PropTypes.func.isRequired,
+  classes: PropTypes.string,
 };
 
 const mapStateToProps = (state, ownProps) => {

@@ -17,6 +17,8 @@ body {
 .movie-list-filters {
   margin: 1em 0;
   text-align: center;
+  font-size: 2em;
+  line-height: 2em;
 }
 
 img {

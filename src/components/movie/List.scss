@@ -4,6 +4,26 @@
   margin: 0px 0 50px;
 }
 
+.movie-list__filter-card,
+.movie-list__title-card {
+  margin: 0 1em 1em;
+}
+
+.movie-list__title-card-content {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.movie-list__title-card .movie-list__title-card-content {
+  background: #9c27b0;
+  h1 {
+    color: white;
+  }
+}
+
 .movie-item {
   padding: 20px 0;
 
@@ -15,9 +35,18 @@
 
 .movie-item {
   padding: 0 0 20px 0;
-
+  position: relative;
   .movie-item__poster {
     width: 100%;
+  }
+
+  .movie-item__add-btn {
+    position: absolute;
+    margin-top: -20px;
+    width: 100%;
+  }
+
+  .movie-item__poster-overlay {
   }
 }
 
