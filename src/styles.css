@@ -27,7 +27,7 @@ img {
   text-align: center;
   background: url(./images/backslant-home-top.svg) no-repeat 50% 0;
   background-size: 100%;
-  padding: 50px 0 0;
+  padding: 20px 0 0;
 }
 
 h1.main-title {
@@ -41,7 +41,6 @@ h1.main-title {
 .color-white {
   color: White;
 }
-
 
 .site-footer {
   background: white;

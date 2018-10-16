@@ -5,14 +5,8 @@ import { compose } from "redux";
 import { withRouter } from "react-router";
 import { Helmet } from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import MovieList from "../components/movie/List";
 import MovieListFilters from "../components/movie/ListFilters";
-import * as routes from "../constants/routes";
 import {
   boundChangeYear,
   boundChangeGenre,
@@ -56,6 +50,19 @@ class HomePage extends Component {
       user,
     } = this.props;
 
+    const ListFilters = (
+      <MovieListFilters
+        handleYearChange={this.handleYearChange}
+        handleGenreChange={this.handleGenreChange}
+        requestRandomList={this.props.requestRandomList}
+        genres={genres}
+        years={years}
+        genre={genre}
+        year={year}
+        movieCount={movies.length}
+      />
+    );
+
     return (
       <div className="homepage">
         <Helmet>
@@ -81,53 +88,7 @@ class HomePage extends Component {
           />
         </Helmet>
 
-        <Card className={classes.filterCard}>
-          <CardContent>
-            <Typography
-              variant="display1"
-              className={classes.smallerTitle}
-              gutterBottom
-              color="textPrimary"
-            >
-              Movies ranked by their revenues
-            </Typography>
-
-            <Typography
-              variant="headline"
-              color="textSecondary"
-              className={classes.smallerSubtitle}
-            >
-              Because masses are never wrong!
-            </Typography>
-
-            {user.isLoggedIn === false && (
-              <div>
-                <Typography style={{ margin: "20px 0" }} color="textPrimary">
-                  Login to do cool stuff like <br />
-                  saving movies that makes you say "yeah I'll definitely watch
-                  it"
-                </Typography>
-                <Link className="my-list-btn" to={routes.SIGNIN}>
-                  <Button color="primary" variant="raised">
-                    Login
-                  </Button>
-                </Link>
-              </div>
-            )}
-            <MovieListFilters
-              handleYearChange={this.handleYearChange}
-              handleGenreChange={this.handleGenreChange}
-              requestRandomList={this.props.requestRandomList}
-              genres={genres}
-              years={years}
-              genre={genre}
-              year={year}
-              movieCount={movies.length}
-            />
-          </CardContent>
-        </Card>
-
-        <MovieList movies={movies} />
+        <MovieList movies={movies} ListFilters={ListFilters} />
       </div>
     );
   }
