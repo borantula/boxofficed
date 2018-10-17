@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import Modal from "@material-ui/core/Modal";
 import { auth } from "../../app/firebase";
 import "./Header.scss";
 
@@ -66,6 +67,20 @@ const Header = ({
         </Toolbar>
       </AppBar>
       {isFetchingMovies === true && <LinearProgress color="secondary" />}
+      <Modal
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        open={false}
+      >
+        <div>
+          <Typography variant="title" id="modal-title">
+            Text in a modal
+          </Typography>
+          <Typography variant="subheading" id="simple-modal-description">
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+        </div>
+      </Modal>
     </div>
   );
 };
