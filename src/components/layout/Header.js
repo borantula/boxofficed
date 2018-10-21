@@ -10,9 +10,10 @@ import Typography from "@material-ui/core/Typography";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Modal from "@material-ui/core/Modal";
 import { auth } from "../../app/firebase";
+import LoginButtons from "../user/LoginButtons";
 import "./Header.scss";
 
-const styles = {
+const styles = theme => ({
   root: {
     flexGrow: 1,
   },
@@ -22,7 +23,17 @@ const styles = {
   appbar: {
     backgroundColor: "white",
   },
-};
+  paper: {
+    position: "absolute",
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  },
+});
 
 const Header = ({
   title = "",
@@ -72,13 +83,12 @@ const Header = ({
         aria-describedby="simple-modal-description"
         open={false}
       >
-        <div>
-          <Typography variant="title" id="modal-title">
-            Text in a modal
+        <div className={classes.paper}>
+          <Typography align="center">
+            Login to do cool stuff like saving movies that makes you say "yeah
+            I'll definitely watch it"
           </Typography>
-          <Typography variant="subheading" id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <LoginButtons />
         </div>
       </Modal>
     </div>

@@ -20,7 +20,7 @@ const AddRemoveListButtons = ({
     <div className={classes}>
       {!isInBag && (
         <Button
-          variant="raised"
+          variant="contained"
           color="primary"
           size="small"
           onClick={() => movieAddedToSavedList(movie)}
@@ -31,8 +31,8 @@ const AddRemoveListButtons = ({
 
       {isInBag && (
         <Button
-          variant="raised"
-          color="secondary"
+          variant="contained"
+          color="default"
           size="small"
           onClick={() => movieRemovedFromSavedList(movie)}
         >
@@ -54,6 +54,7 @@ AddRemoveListButtons.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    user: state.currentUser,
     savedMovies: state.savedMovies,
   };
 };

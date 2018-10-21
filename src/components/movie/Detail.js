@@ -9,7 +9,7 @@ import "./Detail.css";
 
 const MovieDetail = ({ movie, backLink }) => {
   const posterPath = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-  const backdropPath = `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`;
+  // const backdropPath = `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`;
   const year = movie.release_date.split("-")[0];
 
   return (
@@ -59,13 +59,6 @@ const MovieDetail = ({ movie, backLink }) => {
               <div className="movie-detail__desc">{movie.overview}</div>
             </Grid>
           </Grid>
-
-          <img
-            className="movie-item__poster"
-            src={backdropPath}
-            width=""
-            alt={movie.title}
-          />
         </CardContent>
       </Card>
     </div>

@@ -17,6 +17,10 @@ const styles = theme => ({
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
+    fontSize: "20px",
+  },
+  select: {
+    fontSize: "20px",
   },
   buttonContainer: {
     margin: "20px 0",
@@ -42,6 +46,7 @@ const MovieListFilters = ({
           value={year}
           onChange={handleYearChange}
           input={<Input name="year" id="age-native-helper" />}
+          className={classes.select}
         >
           {years.map(value => (
             <option key={value.year} value={value.year}>
@@ -50,7 +55,7 @@ const MovieListFilters = ({
           ))}
         </NativeSelect>
       </FormControl>
-      and
+      <br /> and <br />
       <FormControl className={classes.formControl}>
         <NativeSelect
           value={genre}
