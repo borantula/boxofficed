@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import initialState from "./initialState";
-//import ui from "./ui";
+import ui from "./ui";
 import * as types from "../constants/action-types";
 
 //TODO divide into multiple reducers for readability
@@ -96,17 +96,6 @@ const isFetchingMovies = (state = initialState.isFetchingMovies, action) => {
   switch (action.type) {
     case types.FETCHING_MOVIES:
       return !!action.payload;
-    default:
-      return state;
-  }
-};
-
-const ui = (state = initialState.ui, action) => {
-  switch (action.type) {
-    case types.UI_LOGIN_MODAL_OPEN:
-      return { ...state.ui, showLoginModal: true };
-    case types.UI_LOGIN_MODAL_CLOSE:
-      return { ...state.ui, showLoginModal: false };
     default:
       return state;
   }
