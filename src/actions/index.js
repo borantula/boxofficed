@@ -50,6 +50,14 @@ export const isFetchingMovies = status => ({
   payload: status,
 });
 
+export const openLoginModal = () => ({
+  type: types.UI_LOGIN_MODAL_OPEN,
+});
+
+export const closeLoginModal = () => ({
+  type: types.UI_LOGIN_MODAL_CLOSE,
+});
+
 /**
  * Dispatch year change and also start fetching movies
  */
@@ -86,6 +94,7 @@ export const fetchMovieIfNeeded = movieId => (dispatch, getState) => {
 
 export const setCurrentUser = userData => dispatch => {
   dispatch(userLoggedIn(userData));
+  dispatch(closeLoginModal());
 };
 
 export const requestRandomList = () => (dispatch, getState) => {

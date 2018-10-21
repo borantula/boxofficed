@@ -29,6 +29,9 @@ const initialState = {
   },
   savedMovies: [],
   isFetchingMovies: false,
+  ui: {
+    showLoginModal: false,
+  },
 };
 
 export default initialState;

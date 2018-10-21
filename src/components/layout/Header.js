@@ -41,8 +41,10 @@ const Header = ({
   routes,
   savedMoviesCount,
   isFetchingMovies,
+  ui,
   classes,
 }) => {
+  const myBagLink = user.isLoggedIn === true ? routes.MYLIST : routes.SIGNIN;
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appbar}>
@@ -60,7 +62,7 @@ const Header = ({
             )}
 
             <Badge color="secondary" badgeContent={savedMoviesCount}>
-              <Link className="my-list-btn" to={routes.MYLIST}>
+              <Link className="my-list-btn" to={myBagLink}>
                 <Button color="primary">My Bag</Button>
               </Link>
             </Badge>
@@ -81,7 +83,7 @@ const Header = ({
       <Modal
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
-        open={false}
+        open={ui.showLoginModal}
       >
         <div className={classes.paper}>
           <Typography align="center">
@@ -103,6 +105,7 @@ Header.propTypes = {
   savedMoviesCount: PropTypes.number.isRequired,
   routes: PropTypes.object.isRequired,
   isFetchingMovies: PropTypes.bool.isRequired,
+  ui: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
 };
 

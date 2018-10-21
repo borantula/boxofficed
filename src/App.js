@@ -40,6 +40,7 @@ class App extends Component {
                 title="Box Officed!"
                 routes={routes}
                 user={this.props.user}
+                ui={this.props.ui}
                 savedMoviesCount={this.props.savedMovies.length}
                 isFetchingMovies={this.props.isFetchingMovies}
               />
@@ -70,12 +71,15 @@ App.propTypes = {
   //current user object
   user: PropTypes.object.isRequired,
   savedMovies: PropTypes.array.isRequired,
+  isFetchingMovies: PropTypes.bool.isRequired,
+  ui: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => ({
   user: state.currentUser,
   savedMovies: state.savedMovies,
   isFetchingMovies: state.isFetchingMovies,
+  ui: state.ui,
 });
 
 const ComposedApp = compose(

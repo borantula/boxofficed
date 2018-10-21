@@ -6,6 +6,7 @@ import Icon from "@material-ui/core/Icon";
 import {
   movieAddedToSavedList,
   movieRemovedFromSavedList,
+  openLoginModal,
 } from "../../actions";
 
 const AddRemoveListButtons = ({
@@ -13,9 +14,15 @@ const AddRemoveListButtons = ({
   savedMovies,
   movieAddedToSavedList,
   movieRemovedFromSavedList,
+  openLoginModal,
+  user,
   classes,
 }) => {
   const isInBag = savedMovies.find(saved => movie.id === saved.id);
+
+  const addFunc = movie =>
+    user.isLoggedIn ? movieAddedToSavedList(movie) : openLoginModal();
+
   return (
     <div className={classes}>
       {!isInBag && (
@@ -23,7 +30,7 @@ const AddRemoveListButtons = ({
           variant="contained"
           color="primary"
           size="small"
-          onClick={() => movieAddedToSavedList(movie)}
+          onClick={() => addFunc(movie)}
         >
           <Icon>playlist_add</Icon> Put it in my bag!
         </Button>
@@ -62,6 +69,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = {
   movieAddedToSavedList,
   movieRemovedFromSavedList,
+  openLoginModal,
 };
 
 export default connect(
