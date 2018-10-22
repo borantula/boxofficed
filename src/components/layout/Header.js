@@ -41,6 +41,7 @@ const Header = ({
   routes,
   savedMoviesCount,
   isFetchingMovies,
+  closeLoginModal,
   ui,
   classes,
 }) => {
@@ -84,6 +85,7 @@ const Header = ({
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         open={ui.showLoginModal}
+        onClose={() => closeLoginModal()}
       >
         <div className={classes.paper}>
           <Typography align="center">

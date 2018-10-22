@@ -15,6 +15,7 @@ import MovieDetailPage from "./containers/Movie/DetailPage";
 import UserSignInPage from "./containers/User/SignInPage";
 import MyListPage from "./containers/User/MyListPage";
 import * as routes from "./constants/routes";
+import { closeLoginModal } from "./actions";
 import {
   withAuthentication,
   withSavedListConnection,
@@ -43,6 +44,7 @@ class App extends Component {
                 ui={this.props.ui}
                 savedMoviesCount={this.props.savedMovies.length}
                 isFetchingMovies={this.props.isFetchingMovies}
+                closeLoginModal={this.props.closeLoginModal}
               />
               <div className="site-content">
                 <ScrollToTop>
@@ -90,4 +92,7 @@ const ComposedApp = compose(
   //withGoogleAds
 )(App);
 
-export default connect(mapStateToProps)(ComposedApp);
+export default connect(
+  mapStateToProps,
+  { closeLoginModal }
+)(ComposedApp);
