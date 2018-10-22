@@ -20,10 +20,8 @@ Website: https://boxofficed.com/
 - [x] Add a Random button to filters
 - [ ] Tidy up reducers and actions
 - [ ] Write tests
-- [ ] Handle movie list when user is a guest then logs in. We should have a merge mechanism
 - [x] Move some more api functionality like retrieving genre lists etc to HOC
-- [ ] Add pagination
-- [ ] Scroll to movie list after the category selection
+- [ ] Add pagination or lazyload on bottom
 - [ ] Filtering to create url params to make them indexable
 - [ ] Create a sitemap
-- [ ] Save lists to localstorage if user is not logged in
+- [ ] Clear up some props passed from App to header
