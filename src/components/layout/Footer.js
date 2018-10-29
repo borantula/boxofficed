@@ -19,7 +19,6 @@ export default () => {
         component="p"
       >
         <span>
-          {" "}
           Built by{" "}
           <a className="footer-links" href="https://twitter.com/borantula">
             Bora Yalcin
@@ -32,6 +31,15 @@ export default () => {
             {" "}
             Github
           </a>
+          . Uses{" "}
+          <a
+            href="https://www.themoviedb.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            The Movie DB
+          </a>{" "}
+          API for movie data
         </span>
       </Typography>
     </footer>

@@ -42,6 +42,7 @@ const Header = ({
   savedMoviesCount,
   isFetchingMovies,
   closeLoginModal,
+  openLoginModal,
   ui,
   classes,
 }) => {
@@ -57,25 +58,34 @@ const Header = ({
           </Typography>
           <span>
             {user.isLoggedIn === false && (
-              <Link className="my-list-btn" to={routes.SIGNIN}>
-                <Button color="primary">Login</Button>
-              </Link>
+              <React.Fragment>
+                <Button color="primary" onClick={() => openLoginModal()}>
+                  Login
+                </Button>
+                <Badge color="secondary" badgeContent={savedMoviesCount}>
+                  <Button color="primary" onClick={() => openLoginModal()}>
+                    My Bag
+                  </Button>
+                </Badge>
+              </React.Fragment>
             )}
 
-            <Badge color="secondary" badgeContent={savedMoviesCount}>
-              <Link className="my-list-btn" to={myBagLink}>
-                <Button color="primary">My Bag</Button>
-              </Link>
-            </Badge>
             {user.isLoggedIn === true && (
-              <Button
-                color="primary"
-                onClick={() =>
-                  auth.signOut().then(() => window.location.reload())
-                }
-              >
-                Logout
-              </Button>
+              <React.Fragment>
+                <Badge color="secondary" badgeContent={savedMoviesCount}>
+                  <Link className="my-list-btn" to={myBagLink}>
+                    <Button color="primary">My Bag</Button>
+                  </Link>
+                </Badge>
+                <Button
+                  color="primary"
+                  onClick={() =>
+                    auth.signOut().then(() => window.location.reload())
+                  }
+                >
+                  Logout
+                </Button>
+              </React.Fragment>
             )}
           </span>
         </Toolbar>
@@ -109,6 +119,8 @@ Header.propTypes = {
   isFetchingMovies: PropTypes.bool.isRequired,
   ui: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
+  closeLoginModal: PropTypes.func.isRequired,
+  openLoginModal: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(Header);
