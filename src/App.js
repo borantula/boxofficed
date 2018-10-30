@@ -14,6 +14,7 @@ import Footer from "./components/layout/Footer";
 import MovieDetailPage from "./containers/Movie/DetailPage";
 import UserSignInPage from "./containers/User/SignInPage";
 import MyListPage from "./containers/User/MyListPage";
+import PrivacyPolicyPage from "./containers/Pages/PrivacyPolicyPage";
 import * as routes from "./constants/routes";
 import { closeLoginModal, openLoginModal } from "./actions";
 import {
@@ -58,6 +59,11 @@ class App extends Component {
                       component={UserSignInPage}
                     />
                     <Route path={routes.MYLIST} exact component={MyListPage} />
+                    <Route
+                      path={routes.PRIVACY_POLICY}
+                      exact
+                      component={PrivacyPolicyPage}
+                    />
                   </Switch>
                 </ScrollToTop>
               </div>

@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
+import * as routes from "../../constants/routes";
 
 export default () => {
   return (
@@ -39,7 +41,9 @@ export default () => {
           >
             The Movie DB
           </a>{" "}
-          API for movie data
+          API for movie data. <br /> Click here for{" "}
+          <Link to={routes.PRIVACY_POLICY}>Privacy Policy</Link> in case you're
+          curious.
         </span>
       </Typography>
     </footer>
