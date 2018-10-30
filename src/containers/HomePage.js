@@ -37,7 +37,7 @@ class HomePage extends Component {
 
   componentDidMount() {
     document.title =
-      "Box Officed! | Movies ranked by their revenues, because masses cannot be wrong!";
+      "Box Officed! | Movies ranked by revenue, because masses cannot be wrong!";
     this.props.resetDisplayedMovie();
     this.props.yearChanged(this.props.year);
   }
@@ -62,7 +62,7 @@ class HomePage extends Component {
       <Card className="movie-list__title-card">
         <CardContent className="movie-list__title-card-content">
           <Typography variant="display1" gutterBottom>
-            Movies ranked by their revenues
+            Movies ranked by revenue
           </Typography>
 
           <Typography variant="headline">
@@ -76,8 +76,8 @@ class HomePage extends Component {
       <div className="homepage">
         <Helmet>
           <title>
-            Box Officed! | Movies ranked by their revenues, because masses are
-            never wrong!
+            Box Officed! | Movies ranked by revenue, because masses are never
+            wrong!
           </title>
           <meta
             name="viewport"
@@ -88,7 +88,7 @@ class HomePage extends Component {
           <meta property="og:title" content="Box Officed!" />
           <meta
             property="og:description"
-            content="Movies ranked by their revenues, because masses are
+            content="Movies ranked by revenue, because masses are
             never wrong!"
           />
           <meta
