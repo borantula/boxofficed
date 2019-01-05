@@ -19,7 +19,7 @@ const years = [
 const initialState = {
   movies: [],
   genres: genresObj.genres,
-  year: currentYear,
+  year: currentYear - 1,
   years,
   genre: "",
   displayedMovie: false,

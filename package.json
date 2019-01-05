@@ -19,8 +19,8 @@
     "normalize.css": "8.0.0",
     "prop-types": "15.6.2",
     "querystring": "0.2.0",
-    "react": "16.4.1",
-    "react-dom": "16.4.1",
+    "react": "16.4.2",
+    "react-dom": "16.4.2",
     "react-firebaseui": "^3.0.6",
     "react-helmet": "5.2.0",
     "react-redux": "5.0.7",
@@ -50,7 +50,11 @@
     "not op_mini all"
   ],
   "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
-  "setupFiles": ["./src/setupTests.js"]
+  "setupFiles": [
+    "./src/setupTests.js"
+  ]
 }
